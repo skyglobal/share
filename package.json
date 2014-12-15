@@ -1,7 +1,7 @@
 {
   "name": "share",
   "version": "0.0.0",
-  "description": "Example package.json. Feel free to copy!",
+  "description": "A component to share articles.",
   "main": "index.js",
   "devDependencies": {
     "browser-sync": "^1.5.9",
