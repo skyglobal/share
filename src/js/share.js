@@ -78,9 +78,40 @@ function toggleSharePopover(e) {
     }
 }
 
+var eventRegistry = {};
+
+function dispatchEvent(event) {
+    var targetElement = event.target;
+
+    eventRegistry[event.type].forEach(function (entry) {
+        var potentialElements = document.querySelectorAll(entry.selector);
+        var hasMatch = Array.prototype.indexOf.call(potentialElements, targetElement) >= 0;
+
+        if (hasMatch) {
+            entry.handler.call(targetElement, event);
+        }
+    }.bind(this));
+
+}
+
+function live(){
+
+        return function ( event, selector, handler) {
+            if (!eventRegistry[event]) {
+                eventRegistry[event] = [];
+                this.on(document.documentElement, event, dispatchEvent.bind(this), true);
+            }
+
+            eventRegistry[event].push({
+                selector: selector,
+                handler: handler
+            });
+        };
+}
+
 
 function bindEvents() {
-    $document.on('click keypress', '.share-popup .summary', toggleSharePopover);
+    live('click keypress', '.share-popup .summary', toggleSharePopover);
 }
 
 
