@@ -3,7 +3,7 @@
     "version": "0.0.0",
     "homepage": "https://github.com/skyglobal/share",
     "authors": [
-        "git.user-name <{{ git.user-email }}>"
+        "Peter Mouland peter.mouland@gmail.com"
     ],
     "description": "share",
     "main": "dist",
@@ -14,6 +14,7 @@
     ],
     "devDependencies": {
         "bskyb-colours": "~0.0.8",
-        "bskyb-typography": "~0.0.3"
+        "bskyb-typography": "~0.0.3",
+        "bskyb-skycons": "~0.0.7"
     }
 }
