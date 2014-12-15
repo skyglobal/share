@@ -89,7 +89,7 @@ function dispatchEvent(event) {
 
     eventRegistry[event.type].forEach(function (entry) {
         var potentialElements = document.querySelectorAll(entry.selector);
-        var hasMatch = false
+        var hasMatch = false;
         Array.prototype.forEach.call(potentialElements, function(item){
             if (contains(item, targetElement)){
                 hasMatch = true;
@@ -123,12 +123,18 @@ function live(event, selector, handler){
 function toggleSharePopover(e) {
     e.preventDefault();
     var section = parent(this, '.share-popup'),
-        popover = section.parentNode.getElementsByClassName('.popover'),
+        popover = section.getElementsByClassName('popover'),
         triggerEvents = 'keypress ' + ('ontouchend' in document.documentElement ? 'touchend' : 'click');
     if(e.type === 'click' || e.type === 'touchend' || (e.type === 'keypress' && e.which === 13)) {
         toggleClass(section, 'active');
-        toggleClass(popover, "top", !elementVisibleBottom(popover[0]));
-        toggleClass(popover, "left", !elementVisibleRight(popover[0]));
+        removeClass(popover[0], "left");
+        removeClass(popover[0], "top");
+        if (!elementVisibleRight(popover[0])){
+            addClass(popover[0], "left");
+        }
+        if (!elementVisibleBottom(popover[0])){
+            addClass(popover[0], "top", !elementVisibleRight(popover[0]));
+        }
 
         on(document, triggerEvents, function hidePopover(e) {
             if(!contains(section, e.target)) {
@@ -139,8 +145,23 @@ function toggleSharePopover(e) {
     }
 }
 
+
+function popupLink(e) {
+    e.preventDefault();
+    var args = {}
+    var url = (this.tagName === 'A') ? this : parent(this, 'a').getAttribute('href');
+    var width = args.width || 626;
+    var height = args.height || 436;
+    var top = args.top || (screen.height/2)-(height/2);
+    var left = args.left || (screen.width/2)-(width/2);
+    var windowTitle = args.title || 'Sky';
+    return window.open(url, windowTitle, 'top=' + top + ',left=' + left + ',width=' + width + ',height='+ height);
+
+}
+
 function bindEvents() { // keypress
     live('click', '.share-popup .summary', toggleSharePopover);
+    live('click', '[data-popup]', popupLink);
 }
 
 module.exports = {
