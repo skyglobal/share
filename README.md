@@ -1,21 +1,18 @@
 [share](http://skyglobal.github.io/share/) 
 ========================
 
-> share
-
 See http://skyglobal.github.io/share/ for a demo of the Component
 
 ## Usage
 
-### As CSS
+### As Plain HTML/CSS/JS
+
+For the html, plesse take a look at the [demo page](http://skyglobal.github.io/share/)
 
 http://web-toolkit.global.sky.com/components/share/0.0.1/css/share.css
-
-### As JS
-
 http://web-toolkit.global.sky.com/components/share/0.0.1/js/share.js
 
-### As a Sass Module
+### As a Sass Module / Source JS
 
 `bower install --save-dev bskyb-share`
 
