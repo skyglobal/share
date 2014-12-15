@@ -9,11 +9,11 @@ See http://skyglobal.github.io/share/ for a demo of the Component
 
 ### As CSS
 
-http://web-toolkit.global.sky.com/components/share/0.0.0/css/share.css
+http://web-toolkit.global.sky.com/components/share/0.0.1/css/share.css
 
 ### As JS
 
-http://web-toolkit.global.sky.com/components/share/0.0.0/js/share.js
+http://web-toolkit.global.sky.com/components/share/0.0.1/js/share.js
 
 ### As a Sass Module
 
