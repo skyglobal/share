@@ -55,13 +55,69 @@ function toggleClass(el, className, force){
 function off(el, eventName, eventHandler){
     el.removeEventListener(eventName, eventHandler);
 }
-function on(el, eventName, eventHandler){
-    el.addEventListener(eventName, eventHandler);
+
+function on(el, eventName, eventHandler, useCapture){
+    el.addEventListener(eventName, eventHandler, !!useCapture);
 }
+
+function matches(el, selector){
+    var fn = el.matches || el.webkitMatchesSelector || el.mozMatchesSelector || el.msMatchesSelector;
+    return fn.call(el, selector);
+}
+
+function parent(el, selector) {
+    var p = el.parentNode;
+    if (!selector){
+        return p;
+    }
+
+    while (!matches(p, selector) && p!==null) {
+        p = p.parentNode;
+    }
+    return p;
+}
+
+var eventRegistry = {};
+
+function dispatchEvent(event) {
+    var targetElement = event.target;
+
+    eventRegistry[event.type].forEach(function (entry) {
+        var potentialElements = document.querySelectorAll(entry.selector);
+        var hasMatch = false
+        Array.prototype.forEach.call(potentialElements, function(item){
+            if (contains(item, targetElement)){
+                hasMatch = true;
+                return;
+            }
+        });
+
+        if (hasMatch) {
+            entry.handler.call(targetElement, event);
+        }
+    }.bind(this));
+
+}
+
+function live(event, selector, handler){
+
+    if (!eventRegistry[event]) {
+        eventRegistry[event] = [];
+        on(document.documentElement, event, dispatchEvent.bind(this), true);
+    }
+
+    eventRegistry[event].push({
+        selector: selector,
+        handler: handler
+    });
+}
+
+
+
 
 function toggleSharePopover(e) {
     e.preventDefault();
-    var section = this.parentNode,
+    var section = parent(this, '.share-popup'),
         popover = section.parentNode.getElementsByClassName('.popover'),
         triggerEvents = 'keypress ' + ('ontouchend' in document.documentElement ? 'touchend' : 'click');
     if(e.type === 'click' || e.type === 'touchend' || (e.type === 'keypress' && e.which === 13)) {
@@ -78,46 +134,12 @@ function toggleSharePopover(e) {
     }
 }
 
-var eventRegistry = {};
-
-function dispatchEvent(event) {
-    var targetElement = event.target;
-
-    eventRegistry[event.type].forEach(function (entry) {
-        var potentialElements = document.querySelectorAll(entry.selector);
-        var hasMatch = Array.prototype.indexOf.call(potentialElements, targetElement) >= 0;
-
-        if (hasMatch) {
-            entry.handler.call(targetElement, event);
-        }
-    }.bind(this));
-
+function bindEvents() { // keypress
+    live('click', '.share-popup .summary', toggleSharePopover);
 }
-
-function live(){
-
-        return function ( event, selector, handler) {
-            if (!eventRegistry[event]) {
-                eventRegistry[event] = [];
-                this.on(document.documentElement, event, dispatchEvent.bind(this), true);
-            }
-
-            eventRegistry[event].push({
-                selector: selector,
-                handler: handler
-            });
-        };
-}
-
-
-function bindEvents() {
-    live('click keypress', '.share-popup .summary', toggleSharePopover);
-}
-
-
-bindEvents();
 
 module.exports = {
+    init: bindEvents,
     toggleSharePopover: toggleSharePopover
 };
 
