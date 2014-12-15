@@ -20,30 +20,69 @@ function elementVisibleRight(el) {
     return (elementOffset.left + el.offsetWidth <= document.documentElement.clientWidth);
 }
 
-var $document = $(document);
+function contains(el, child){
+    return el !== child && el.contains(child);
+}
+
+function addClass(el, className){
+    if (el.classList)
+        el.classList.add(className);
+    else
+        el.className += ' ' + className;
+}
+
+function removeClass(el, className){
+    if (el.classList)
+        el.classList.remove(className);
+    else
+        el.className = el.className.replace(new RegExp('(^|\\b)' + className.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
+}
+
+function toggleClass(el, className, force){
+    if (el.classList) {
+        el.classList.toggle(className);
+    } else {
+        var classes = el.className.split(' ');
+        var existingIndex = classes.indexOf(className);
+
+        if (existingIndex >= 0 || force === false)
+            removeClass(el, className)
+        else if (existingIndex <0 || force === true)
+            addClass(el, className)
+    }
+}
+
+function off(el, eventName, eventHandler){
+    el.removeEventListener(eventName, eventHandler);
+}
+function on(el, eventName, eventHandler){
+    el.addEventListener(eventName, eventHandler);
+}
+
+function toggleSharePopover(e) {
+    e.preventDefault();
+    var section = this.parentNode,
+        popover = section.parentNode.getElementsByClassName('.popover'),
+        triggerEvents = 'keypress ' + ('ontouchend' in document.documentElement ? 'touchend' : 'click');
+    if(e.type === 'click' || e.type === 'touchend' || (e.type === 'keypress' && e.which === 13)) {
+        toggleClass(section, 'active');
+        toggleClass(popover, "top", !elementVisibleBottom(popover[0]));
+        toggleClass(popover, "left", !elementVisibleRight(popover[0]));
+
+        on(document, triggerEvents, function hidePopover(e) {
+            if(!contains(section, e.target)) {
+                removeClass(section, 'active');
+                off(document, triggerEvents, hidePopover);
+            }
+        });
+    }
+}
+
 
 function bindEvents() {
     $document.on('click keypress', '.share-popup .summary', toggleSharePopover);
 }
 
-function toggleSharePopover(e) {
-    e.preventDefault();
-    var $section = $(this).parent(),
-        $popover = $section.parent().find('.popover'),
-        triggerEvents = 'keypress ' + ('ontouchend' in document.documentElement ? 'touchend' : 'click');
-    if(e.type === 'click' || e.type === 'touchend' || (e.type === 'keypress' && e.which === 13)) {
-        $section.toggleClass('active');
-        $popover.toggleClass("top", !elementVisibleBottom($popover[0]));
-        $popover.toggleClass("left", !elementVisibleRight($popover[0]));
-
-        $document.on(triggerEvents, function hidePopover(e) {
-            if(!$.contains($section[0], e.target)) {
-                $section.removeClass('active');
-                $document.off(triggerEvents, hidePopover);
-            }
-        });
-    }
-}
 
 bindEvents();
 
