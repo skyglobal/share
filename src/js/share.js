@@ -1,3 +1,5 @@
+var event = require('../../bower_components/bskyb-event/src/js/event');
+
 function getElementOffset(el) {
     return {
         top: el.getBoundingClientRect().top + window.pageYOffset - document.documentElement.clientTop,
@@ -20,10 +22,6 @@ function elementVisibleRight(el) {
     }
     var elementOffset = getElementOffset(el);
     return (elementOffset.left + el.offsetWidth <= document.documentElement.clientWidth);
-}
-
-function contains(el, child){
-    return el !== child && el.contains(child);
 }
 
 function addClass(el, className){
@@ -60,18 +58,8 @@ function toggleClass(el, className, force){
     }
 }
 
-function off(el, eventName, eventHandler){
-    el.removeEventListener(eventName, eventHandler);
-}
-
-function on(el, eventName, eventHandler, useCapture){
-    if (el.nodeType){
-        el.addEventListener(eventName, eventHandler, !!useCapture);
-    } else if (el.length){
-        Array.prototype.forEach.call(el, function(element, i){
-            element.addEventListener(eventName, eventHandler, !!useCapture);
-        });
-    }
+function contains(el, child){
+    return el !== child && el.contains(child);
 }
 
 function matches(el, selector){
@@ -94,42 +82,6 @@ function parent(el, selector) {
     return p;
 }
 
-var eventRegistry = {};
-
-function dispatchEvent(event) {
-    var targetElement = event.target;
-
-    eventRegistry[event.type].forEach(function (entry) {
-        var potentialElements = document.querySelectorAll(entry.selector);
-        var hasMatch = false;
-        Array.prototype.forEach.call(potentialElements, function(item){
-            if (contains(item, targetElement) || item === targetElement){
-                hasMatch = true;
-                return;
-            }
-        });
-
-        if (hasMatch) {
-            entry.handler.call(targetElement, event);
-        }
-    }.bind(this));
-
-}
-
-function live(events, selector, eventHandler){
-    events.split(' ').forEach(function attachEvent(eventName){
-        if (!eventRegistry[eventName]) {
-            eventRegistry[eventName] = [];
-            on(document.documentElement, eventName, dispatchEvent, true);
-        }
-
-        eventRegistry[eventName].push({
-            selector: selector,
-            handler: eventHandler
-        });
-    });
-}
-
 
 function toggleSharePopover(e) {
     e.preventDefault();
@@ -141,10 +93,10 @@ function toggleSharePopover(e) {
         toggleClass(popover[0], "share--list__left", !elementVisibleRight(popover[0]));
         toggleClass(popover[0], "share--list__top", !elementVisibleBottom(popover[0]));
 
-        on(document, triggerEvents, function hidePopover(e) {
+        event.on(document, triggerEvents, function hidePopover(e) {
             if(!contains(section, e.target)) {
                 removeClass(section, 'active');
-                off(document, triggerEvents, hidePopover);
+                event.off(document, triggerEvents, hidePopover);
             }
         });
     }
@@ -164,8 +116,8 @@ function popupLink(e) {
 }
 
 function bindEvents() {
-    live('click', '.share--summary', toggleSharePopover);
-    live('click', '.share--social-link', popupLink);
+    event.live('click', '.share--summary', toggleSharePopover);
+    event.live('click', '.share--social-link', popupLink);
 }
 
 module.exports = {
