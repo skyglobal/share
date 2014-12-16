@@ -43,16 +43,19 @@ function removeClass(el, className){
 }
 
 function toggleClass(el, className, force){
-    if (el.classList) {
-        el.classList.toggle(className);
-        return ;
+    if (force === true){
+        return addClass(el, className);
+    } else if (force === false){
+        return removeClass(el, className);
+    } else if (el.classList) {
+        return el.classList.toggle(className);
     }
     var classes = el.className.split(' ');
     var existingIndex = classes.indexOf(className);
 
-    if (existingIndex >= 0 || force === false) {
+    if (existingIndex >= 0){
         removeClass(el, className);
-    } else if (existingIndex <0 || force === true) {
+    } else if (existingIndex <0) {
         addClass(el, className);
     }
 }
@@ -127,14 +130,10 @@ function toggleSharePopover(e) {
         triggerEvents = 'keypress ' + ('ontouchend' in document.documentElement ? 'touchend' : 'click');
     if(e.type === 'click' || e.type === 'touchend' || (e.type === 'keypress' && e.which === 13)) {
         toggleClass(section, 'active');
-        removeClass(popover[0], "left");
-        removeClass(popover[0], "top");
-        if (!elementVisibleRight(popover[0])){
-            addClass(popover[0], "left");
-        }
-        if (!elementVisibleBottom(popover[0])){
-            addClass(popover[0], "top", !elementVisibleRight(popover[0]));
-        }
+        console.log('left', !elementVisibleRight(popover[0]))
+        toggleClass(popover[0], "left", !elementVisibleRight(popover[0]));
+        console.log('top', !elementVisibleBottom(popover[0]))
+        toggleClass(popover[0], "top", !elementVisibleBottom(popover[0]));
 
         on(document, triggerEvents, function hidePopover(e) {
             if(!contains(section, e.target)) {
