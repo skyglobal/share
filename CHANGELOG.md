@@ -1,5 +1,9 @@
 # Change Log
   
+## 0.0.3
+
+  * Added compiled code for bower
+
 ## 0.0.2
 
   * Updated responsive design
