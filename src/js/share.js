@@ -65,11 +65,20 @@ function off(el, eventName, eventHandler){
 }
 
 function on(el, eventName, eventHandler, useCapture){
-    el.addEventListener(eventName, eventHandler, !!useCapture);
+    if (el.nodeType){
+        el.addEventListener(eventName, eventHandler, !!useCapture);
+    } else if (el.length){
+        Array.prototype.forEach.call(el, function(element, i){
+            element.addEventListener(eventName, eventHandler, !!useCapture);
+        });
+    }
 }
 
 function matches(el, selector){
     var fn = el.matches || el.webkitMatchesSelector || el.mozMatchesSelector || el.msMatchesSelector;
+    if (!fn)  { //no 'matches' on document.documentElement
+        return;
+    }
     return fn.call(el, selector);
 }
 
@@ -94,7 +103,7 @@ function dispatchEvent(event) {
         var potentialElements = document.querySelectorAll(entry.selector);
         var hasMatch = false;
         Array.prototype.forEach.call(potentialElements, function(item){
-            if (contains(item, targetElement)){
+            if (contains(item, targetElement) || item === targetElement){
                 hasMatch = true;
                 return;
             }
@@ -107,20 +116,19 @@ function dispatchEvent(event) {
 
 }
 
-function live(event, selector, handler){
+function live(events, selector, eventHandler){
+    events.split(' ').forEach(function attachEvent(eventName){
+        if (!eventRegistry[eventName]) {
+            eventRegistry[eventName] = [];
+            on(document.documentElement, eventName, dispatchEvent, true);
+        }
 
-    if (!eventRegistry[event]) {
-        eventRegistry[event] = [];
-        on(document.documentElement, event, dispatchEvent.bind(this), true);
-    }
-
-    eventRegistry[event].push({
-        selector: selector,
-        handler: handler
+        eventRegistry[eventName].push({
+            selector: selector,
+            handler: eventHandler
+        });
     });
 }
-
-
 
 
 function toggleSharePopover(e) {
@@ -153,10 +161,9 @@ function popupLink(e) {
     var left = args.left || (screen.width/2)-(width/2);
     var windowTitle = args.title || 'Sky';
     return window.open(url, windowTitle, 'top=' + top + ',left=' + left + ',width=' + width + ',height='+ height);
-
 }
 
-function bindEvents() { // keypress
+function bindEvents() {
     live('click', '.share--summary', toggleSharePopover);
     live('click', '.share--social-link', popupLink);
 }
