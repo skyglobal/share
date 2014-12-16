@@ -141,7 +141,6 @@
 
 .share--list__top {
   box-shadow: -2px -1px 3px rgba(0, 0, 0, 0.15);
-  position: absolute;
   top: auto;
   bottom: 0.8em; }
   .share--list__top:before {
