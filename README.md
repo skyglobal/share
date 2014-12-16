@@ -13,6 +13,8 @@ http://web-toolkit.global.sky.com/components/share/0.0.3/css/share.css
 
 http://web-toolkit.global.sky.com/components/share/0.0.3/js/share.js
 
+You will also need [skycons](https://github.com/skyglobal/skycons), please see [here](https://github.com/skyglobal/skycons) how to include them in your project.
+
 ### As a Sass Module / Source JS
 
 `bower install --save-dev bskyb-share`

@@ -1,7 +1,5 @@
 
 @mixin pointer($direction, $color, $size: 10px, $bordered: false) {
-  position: relative;
-
   $middle-axis: top;
   $opposite-direction: 'bottom';
   @if  $direction == bottom {
