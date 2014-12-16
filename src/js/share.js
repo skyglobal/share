@@ -125,15 +125,13 @@ function live(event, selector, handler){
 
 function toggleSharePopover(e) {
     e.preventDefault();
-    var section = parent(this, '.share-popup'),
-        popover = section.getElementsByClassName('popover'),
+    var section = parent(this, '.share--popup'),
+        popover = section.getElementsByClassName('share--list'),
         triggerEvents = 'keypress ' + ('ontouchend' in document.documentElement ? 'touchend' : 'click');
     if(e.type === 'click' || e.type === 'touchend' || (e.type === 'keypress' && e.which === 13)) {
-        toggleClass(section, 'active');
-        console.log('left', !elementVisibleRight(popover[0]))
-        toggleClass(popover[0], "left", !elementVisibleRight(popover[0]));
-        console.log('top', !elementVisibleBottom(popover[0]))
-        toggleClass(popover[0], "top", !elementVisibleBottom(popover[0]));
+        toggleClass(section, 'share--popup__active');
+        toggleClass(popover[0], "share--list__left", !elementVisibleRight(popover[0]));
+        toggleClass(popover[0], "share--list__top", !elementVisibleBottom(popover[0]));
 
         on(document, triggerEvents, function hidePopover(e) {
             if(!contains(section, e.target)) {
@@ -159,8 +157,8 @@ function popupLink(e) {
 }
 
 function bindEvents() { // keypress
-    live('click', '.share-popup .summary', toggleSharePopover);
-    live('click', '[data-popup]', popupLink);
+    live('click', '.share--summary', toggleSharePopover);
+    live('click', '.share--social-link', popupLink);
 }
 
 module.exports = {

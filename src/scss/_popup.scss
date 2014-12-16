@@ -1,0 +1,97 @@
+.share--popup {
+  position: relative;
+  margin-top: 10px;
+}
+
+.share--word {
+  margin-left: 8px;
+  margin-right: 8px;
+}
+
+.share--count {
+  font-family: Helvetica, Arial;
+  font-size: 0.75em;
+  color: #666;
+}
+.share--count__main {
+  color: $link;
+}
+
+.share--summary {
+  text-decoration: none;
+  float: left;
+  cursor: pointer;
+  height: 1em;
+  line-height: 1em;
+  padding-right: 10px;
+  position: relative;
+}
+
+.share--list__popup {
+  @include pointer-bordered(top, #FFF, #CCC);
+  position: absolute;
+  display: none;
+  height: 44px;
+  top: 1.8em;
+  z-index: 1;
+  padding-left: 16px;
+  background-color: #FFF;
+  border: 1px solid #dcdcdc;
+  min-width: 235px;
+  margin: 0;
+  li{
+    line-height: 46px;
+    margin-right: 16px;
+    margin-left: 0;
+  }
+  a{
+    padding: 8px;
+  }
+  &:before,
+  &:after {
+    left: 24px;
+  }
+}
+
+
+.share--popup__active,
+.share--summary:hover {
+  & .skycon-share {
+    color: #0073c5;
+  }
+
+  & .share-word {
+    text-decoration: underline;
+  }
+}
+
+
+
+.share--popup__active .share--list {
+  display: block;
+  box-shadow : 2px 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+
+
+.share--list__top {
+  box-shadow : -2px -1px 3px rgba(0, 0, 0, 0.15);
+  @include pointer-bordered(bottom, #FFF, #CCC);
+  position: absolute;
+  top: auto;
+  bottom: 0.8em;
+  &:before,
+  &:after {
+    left: 24px;
+  }
+}
+
+.share--list__left {
+  left: auto;
+  right: 0;
+  &:before,
+  &:after {
+    left: auto;
+    right: 24px;
+  }
+}
