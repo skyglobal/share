@@ -9,9 +9,9 @@ See http://skyglobal.github.io/share/ for a demo of the Component
 
 For the html, plesse take a look at the [demo page](http://skyglobal.github.io/share/)
 
-http://web-toolkit.global.sky.com/components/share/0.0.1/css/share.css
+http://web-toolkit.global.sky.com/components/share/0.0.2/css/share.css
 
-http://web-toolkit.global.sky.com/components/share/0.0.1/js/share.js
+http://web-toolkit.global.sky.com/components/share/0.0.2/js/share.js
 
 ### As a Sass Module / Source JS
 
