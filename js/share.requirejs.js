@@ -44,16 +44,19 @@ function removeClass(el, className){
 }
 
 function toggleClass(el, className, force){
-    if (el.classList) {
-        el.classList.toggle(className);
-        return ;
+    if (force === true){
+        return addClass(el, className);
+    } else if (force === false){
+        return removeClass(el, className);
+    } else if (el.classList) {
+        return el.classList.toggle(className);
     }
     var classes = el.className.split(' ');
     var existingIndex = classes.indexOf(className);
 
-    if (existingIndex >= 0 || force === false) {
+    if (existingIndex >= 0){
         removeClass(el, className);
-    } else if (existingIndex <0 || force === true) {
+    } else if (existingIndex <0) {
         addClass(el, className);
     }
 }
@@ -63,11 +66,20 @@ function off(el, eventName, eventHandler){
 }
 
 function on(el, eventName, eventHandler, useCapture){
-    el.addEventListener(eventName, eventHandler, !!useCapture);
+    if (el.nodeType){
+        el.addEventListener(eventName, eventHandler, !!useCapture);
+    } else if (el.length){
+        Array.prototype.forEach.call(el, function(element, i){
+            element.addEventListener(eventName, eventHandler, !!useCapture);
+        });
+    }
 }
 
 function matches(el, selector){
     var fn = el.matches || el.webkitMatchesSelector || el.mozMatchesSelector || el.msMatchesSelector;
+    if (!fn)  { //no 'matches' on document.documentElement
+        return;
+    }
     return fn.call(el, selector);
 }
 
@@ -92,7 +104,7 @@ function dispatchEvent(event) {
         var potentialElements = document.querySelectorAll(entry.selector);
         var hasMatch = false;
         Array.prototype.forEach.call(potentialElements, function(item){
-            if (contains(item, targetElement)){
+            if (contains(item, targetElement) || item === targetElement){
                 hasMatch = true;
                 return;
             }
@@ -105,37 +117,30 @@ function dispatchEvent(event) {
 
 }
 
-function live(event, selector, handler){
+function live(events, selector, eventHandler){
+    events.split(' ').forEach(function attachEvent(eventName){
+        if (!eventRegistry[eventName]) {
+            eventRegistry[eventName] = [];
+            on(document.documentElement, eventName, dispatchEvent, true);
+        }
 
-    if (!eventRegistry[event]) {
-        eventRegistry[event] = [];
-        on(document.documentElement, event, dispatchEvent.bind(this), true);
-    }
-
-    eventRegistry[event].push({
-        selector: selector,
-        handler: handler
+        eventRegistry[eventName].push({
+            selector: selector,
+            handler: eventHandler
+        });
     });
 }
 
 
-
-
 function toggleSharePopover(e) {
     e.preventDefault();
-    var section = parent(this, '.share-popup'),
-        popover = section.getElementsByClassName('popover'),
+    var section = parent(this, '.share--popup'),
+        popover = section.getElementsByClassName('share--list'),
         triggerEvents = 'keypress ' + ('ontouchend' in document.documentElement ? 'touchend' : 'click');
     if(e.type === 'click' || e.type === 'touchend' || (e.type === 'keypress' && e.which === 13)) {
-        toggleClass(section, 'active');
-        removeClass(popover[0], "left");
-        removeClass(popover[0], "top");
-        if (!elementVisibleRight(popover[0])){
-            addClass(popover[0], "left");
-        }
-        if (!elementVisibleBottom(popover[0])){
-            addClass(popover[0], "top", !elementVisibleRight(popover[0]));
-        }
+        toggleClass(section, 'share--popup__active');
+        toggleClass(popover[0], "share--list__left", !elementVisibleRight(popover[0]));
+        toggleClass(popover[0], "share--list__top", !elementVisibleBottom(popover[0]));
 
         on(document, triggerEvents, function hidePopover(e) {
             if(!contains(section, e.target)) {
@@ -157,12 +162,11 @@ function popupLink(e) {
     var left = args.left || (screen.width/2)-(width/2);
     var windowTitle = args.title || 'Sky';
     return window.open(url, windowTitle, 'top=' + top + ',left=' + left + ',width=' + width + ',height='+ height);
-
 }
 
-function bindEvents() { // keypress
-    live('click', '.share-popup .summary', toggleSharePopover);
-    live('click', '[data-popup]', popupLink);
+function bindEvents() {
+    live('click', '.share--summary', toggleSharePopover);
+    live('click', '.share--social-link', popupLink);
 }
 
 module.exports = {
