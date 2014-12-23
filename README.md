@@ -5,17 +5,14 @@ See http://skyglobal.github.io/share/ for a demo of the Component
 
 ## Usage
 
-### As Plain HTML/CSS/JS
+### Quick-Start
 
-For the html, plesse take a look at the [demo page](http://skyglobal.github.io/share/)
+ * `CSS` : http://web-toolkit.global.sky.com/components/share/0.0.4/css/share.css
+ * `JS` : http://web-toolkit.global.sky.com/components/share/0.0.4/js/share.js
+ * `HTML` :  Plesse take a look at the [demo page](http://skyglobal.github.io/share/)
+ * Skycons : Please see [here](https://github.com/skyglobal/skycons) how to include them in your project.
 
-http://web-toolkit.global.sky.com/components/share/0.0.4/css/share.css
-
-http://web-toolkit.global.sky.com/components/share/0.0.4/js/share.js
-
-You will also need [skycons](https://github.com/skyglobal/skycons), please see [here](https://github.com/skyglobal/skycons) how to include them in your project.
-
-### As a Sass Module / Source JS
+### As a Sass Module / JS
 
 `bower install --save-dev bskyb-share`
 
