@@ -1,3 +1,225 @@
+/*../fonts/*/
+@font-face {
+  font-family: "skycons";
+  src: url('../fonts/skycons.eot');
+  src: url('../fonts/skycons.eot?#iefix') format('eot'), url('../fonts/skycons.woff') format('woff'), url('../fonts/skycons.ttf') format('truetype'), url('../fonts/skycons.svg#skycons') format('svg'); }
+
+[class^="skycon-"], [class*="skycon-"], .skycon {
+  color: #333;
+  font-size: 16px;
+  line-height: 1.125em; }
+
+[class^="skycon-"]:before, [class*="skycon-"]:before, .skycon:before {
+  font-family: "skycons";
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 1;
+  font-weight: normal;
+  font-style: normal;
+  speak: none;
+  text-decoration: inherit;
+  text-transform: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+.skycon-arrow-down-left:before, .skycon--arrow-down-left:before {
+  content: "\E001"; }
+
+.skycon-arrow-left:before, .skycon--arrow-left:before {
+  content: "\E002"; }
+
+.skycon-arrow-right:before, .skycon--arrow-right:before {
+  content: "\E003"; }
+
+.skycon-at:before, .skycon--at:before {
+  content: "\E004"; }
+
+.skycon-calender:before, .skycon--calender:before {
+  content: "\E005"; }
+
+.skycon-carousel-pause:before, .skycon--carousel-pause:before {
+  content: "\E006"; }
+
+.skycon-carousel-play:before, .skycon--carousel-play:before {
+  content: "\E007"; }
+
+.skycon-chevron-down:before, .skycon--chevron-down:before {
+  content: "\E008"; }
+
+.skycon-chevron-left:before, .skycon--chevron-left:before {
+  content: "\E009"; }
+
+.skycon-chevron-up:before, .skycon--chevron-up:before {
+  content: "\E00A"; }
+
+.skycon-chevron:before, .skycon--chevron:before {
+  content: "\E00B"; }
+
+.skycon-close:before, .skycon--close:before {
+  content: "\E00C"; }
+
+.skycon-cloud:before, .skycon--cloud:before {
+  content: "\E00D"; }
+
+.skycon-download:before, .skycon--download:before {
+  content: "\E00E"; }
+
+.skycon-edit:before, .skycon--edit:before {
+  content: "\E00F"; }
+
+.skycon-expand:before, .skycon--expand:before {
+  content: "\E010"; }
+
+.skycon-facebook:before, .skycon--facebook:before {
+  content: "\E011"; }
+
+.skycon-gallery:before, .skycon--gallery:before {
+  content: "\E012"; }
+
+.skycon-google-plus:before, .skycon--google-plus:before {
+  content: "\E013"; }
+
+.skycon-home:before, .skycon--home:before {
+  content: "\E014"; }
+
+.skycon-info:before, .skycon--info:before {
+  content: "\E015"; }
+
+.skycon-mail:before, .skycon--mail:before {
+  content: "\E016"; }
+
+.skycon-menu:before, .skycon--menu:before {
+  content: "\E017"; }
+
+.skycon-minify:before, .skycon--minify:before {
+  content: "\E018"; }
+
+.skycon-mouse:before, .skycon--mouse:before {
+  content: "\E019"; }
+
+.skycon-never-miss:before, .skycon--never-miss:before {
+  content: "\E01A"; }
+
+.skycon-on-demand:before, .skycon--on-demand:before {
+  content: "\E01B"; }
+
+.skycon-pending:before, .skycon--pending:before {
+  content: "\E01C"; }
+
+.skycon-phone:before, .skycon--phone:before {
+  content: "\E01D"; }
+
+.skycon-plus-circle:before, .skycon--plus-circle:before {
+  content: "\E01E"; }
+
+.skycon-remote-download:before, .skycon--remote-download:before {
+  content: "\E01F"; }
+
+.skycon-remote-record:before, .skycon--remote-record:before {
+  content: "\E020"; }
+
+.skycon-search:before, .skycon--search:before {
+  content: "\E021"; }
+
+.skycon-share:before, .skycon--share:before {
+  content: "\E022"; }
+
+.skycon-sky-go:before, .skycon--sky-go:before {
+  content: "\E023"; }
+
+.skycon-sky-plus:before, .skycon--sky-plus:before {
+  content: "\E024"; }
+
+.skycon-sky:before, .skycon--sky:before {
+  content: "\E025"; }
+
+.skycon-speech-bubble:before, .skycon--speech-bubble:before {
+  content: "\E026"; }
+
+.skycon-tick:before, .skycon--tick:before {
+  content: "\E027"; }
+
+.skycon-tv:before, .skycon--tv:before {
+  content: "\E028"; }
+
+.skycon-twitter-favourite:before, .skycon--twitter-favourite:before {
+  content: "\E029"; }
+
+.skycon-twitter-follow:before, .skycon--twitter-follow:before {
+  content: "\E02A"; }
+
+.skycon-twitter-reply:before, .skycon--twitter-reply:before {
+  content: "\E02B"; }
+
+.skycon-twitter-retweet:before, .skycon--twitter-retweet:before {
+  content: "\E02C"; }
+
+.skycon-twitter:before, .skycon--twitter:before {
+  content: "\E02D"; }
+
+.skycon-user-profile:before, .skycon--user-profile:before {
+  content: "\E02E"; }
+
+.skycon-video-play:before, .skycon--video-play:before {
+  content: "\E02F"; }
+
+.skycon-volume:before, .skycon--volume:before {
+  content: "\E030"; }
+
+.skycon-warning:before, .skycon--warning:before {
+  content: "\E031"; }
+
+.skycon-whatsapp:before, .skycon--whatsapp:before {
+  content: "\E032"; }
+
+body .hover-colour:hover .skycon-sky-go, body .colour.skycon-sky-go, body .skycon--hover:hover .skycon--sky-go, body .skycon--sky-go.skycon--active {
+  color: #44ad3a; }
+body .hover-colour:hover .skycon-remote-record, body .colour.skycon-remote-record, body .skycon--hover:hover .skycon--remote-record, body .skycon--remote-record.skycon--active {
+  color: #ed1c24; }
+body .hover-colour:hover .skycon-never-miss, body .colour.skycon-never-miss, body .skycon--hover:hover .skycon--never-miss, body .skycon--never-miss.skycon--active {
+  color: #0077ae; }
+body .hover-colour:hover .skycon-warning, body .colour.skycon-warning, body .skycon--hover:hover .skycon--warning, body .skycon--warning.skycon--active {
+  color: #D21717; }
+body .hover-colour:hover .skycon-google-plus, body .colour.skycon-google-plus, body .skycon--hover:hover .skycon--google-plus, body .skycon--google-plus.skycon--active {
+  color: #dd4c38; }
+body .hover-colour:hover .skycon-twitter, body .colour.skycon-twitter, body .skycon--hover:hover .skycon--twitter, body .skycon--twitter.skycon--active {
+  color: #25a8e0; }
+body .hover-colour:hover .skycon-facebook, body .colour.skycon-facebook, body .skycon--hover:hover .skycon--facebook, body .skycon--facebook.skycon--active {
+  color: #3b5998; }
+body .hover-colour:hover .skycon-tick, body .colour.skycon-tick, body .skycon--hover:hover .skycon--tick, body .skycon--tick.skycon--active {
+  color: #6dbb00; }
+body .hover-colour:hover .skycon-chevron, body .colour.skycon-chevron, body .skycon--hover:hover .skycon--chevron, body .skycon--chevron.skycon--active {
+  color: #0070a5; }
+body .hover-colour:hover .skycon-chevron-up, body .colour.skycon-chevron-up, body .skycon--hover:hover .skycon--chevron-up, body .skycon--chevron-up.skycon--active {
+  color: #0070a5; }
+body .hover-colour:hover .skycon-chevron-down, body .colour.skycon-chevron-down, body .skycon--hover:hover .skycon--chevron-down, body .skycon--chevron-down.skycon--active {
+  color: #0070a5; }
+body .hover-colour:hover .skycon-at, body .colour.skycon-at, body .skycon--hover:hover .skycon--at, body .skycon--at.skycon--active {
+  color: #0073c5; }
+body .hover-colour:hover .skycon-cloud, body .colour.skycon-cloud, body .skycon--hover:hover .skycon--cloud, body .skycon--cloud.skycon--active {
+  color: #0073c5; }
+body .hover-colour:hover .skycon-on-demand, body .colour.skycon-on-demand, body .skycon--hover:hover .skycon--on-demand, body .skycon--on-demand.skycon--active {
+  color: #0073c5; }
+body .hover-colour:hover .skycon-sky-plus, body .colour.skycon-sky-plus, body .skycon--hover:hover .skycon--sky-plus, body .skycon--sky-plus.skycon--active {
+  color: #0073c5; }
+body .hover-colour:hover .skycon-mouse, body .colour.skycon-mouse, body .skycon--hover:hover .skycon--mouse, body .skycon--mouse.skycon--active {
+  color: #0073c5; }
+body .hover-colour:hover .skycon-tv, body .colour.skycon-tv, body .skycon--hover:hover .skycon--tv, body .skycon--tv.skycon--active {
+  color: #0073c5; }
+body .hover-colour:hover .skycon-phone, body .colour.skycon-phone, body .skycon--hover:hover .skycon--phone, body .skycon--phone.skycon--active {
+  color: #0073c5; }
+body .hover-colour:hover .skycon-edit, body .colour.skycon-edit, body .skycon--hover:hover .skycon--edit, body .skycon--edit.skycon--active {
+  color: #0073c5; }
+body .hover-colour:hover .skycon-share, body .colour.skycon-share, body .skycon--hover:hover .skycon--share, body .skycon--share.skycon--active {
+  color: #0073c5; }
+body .hover-colour:hover .skycon-mail, body .colour.skycon-mail, body .skycon--hover:hover .skycon--mail, body .skycon--mail.skycon--active {
+  color: #0073c5; }
+body .hover-colour:hover .skycon-pending, body .colour.skycon-pending, body .skycon--hover:hover .skycon--pending, body .skycon--pending.skycon--active {
+  color: #6dbb00; }
+body .hover-colour:hover .skycon-whatsapp, body .colour.skycon-whatsapp, body .skycon--hover:hover .skycon--whatsapp, body .skycon--whatsapp.skycon--active {
+  color: #34AF23; }
+
 .speak {
   position: absolute !important;
   clip: rect(1px, 1px, 1px, 1px);
@@ -9,49 +231,49 @@
   overflow: hidden;
   display: block; }
 
-.share--list {
+.share__list {
   display: inline;
   margin-left: 30px; }
-  .share--list li {
+  .share__list li {
     display: inline-block;
     margin: 0 10px; }
-    .lt-ie8 .share--list li {
+    .lt-ie8 .share__list li {
       display: inline; }
 
 .share a {
   color: #666; }
 
-.share--bar {
+.share__bar {
   border-top: 1px solid #C0C0C0;
   margin: 16px 0;
   padding-top: 16px; }
 
-.share--name {
+.share__name {
   margin-left: 10px; }
 
-.share--title {
+.share__title {
   display: inline; }
 
 @media screen and (max-width: 767px) {
-  .share--title {
+  .share__title {
     font-size: 1.1em; }
  }
 
 @media screen and (max-width: 600px) {
-  .share--bar {
+  .share__bar {
     margin: 0;
     padding: 0; }
-    .share--bar .share--list {
+    .share__bar .share__list {
       margin-left: 15px; }
-      .share--bar .share--list li {
+      .share__bar .share__list li {
         margin: 1%;
         padding: 10px 0;
         width: 33px;
         text-align: center; }
-    .share--bar a {
+    .share__bar a {
       display: block; }
 
-  .share--name {
+  .share__name {
     position: absolute !important;
     clip: rect(1px, 1px, 1px, 1px);
     clip: rect(1px 1px 1px 1px);
@@ -63,23 +285,34 @@
     display: block; }
  }
 
-.share--popup {
+.speak {
+  position: absolute !important;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip: rect(1px 1px 1px 1px);
+  padding: 0;
+  border: 0;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  display: block; }
+
+.share__popup {
   position: relative;
   margin-top: 10px; }
 
-.share--word {
+.share__word {
   margin-left: 8px;
   margin-right: 8px; }
 
-.share--count {
+.share__count {
   font-family: Helvetica, Arial;
   font-size: 0.75em;
   color: #666; }
 
-.share--count__main {
+.share__count--main {
   color: #0070a5; }
 
-.share--summary {
+.share__summary {
   text-decoration: none;
   float: left;
   cursor: pointer;
@@ -88,7 +321,7 @@
   padding-right: 10px;
   position: relative; }
 
-.share--list__popup {
+.share__list--popup {
   position: absolute;
   display: none;
   height: 44px;
@@ -99,7 +332,7 @@
   border: 1px solid #dcdcdc;
   min-width: 235px;
   margin: 0; }
-  .share--list__popup:before {
+  .share__list--popup:before {
     content: "";
     position: absolute;
     bottom: 100%;
@@ -110,7 +343,7 @@
     border: 10px solid transparent;
     border-bottom-color: #CCC;
     z-index: 1; }
-  .share--list__popup:after {
+  .share__list--popup:after {
     content: "";
     position: absolute;
     bottom: 100%;
@@ -121,29 +354,29 @@
     border: 9px solid transparent;
     border-bottom-color: #FFF;
     z-index: 2; }
-  .share--list__popup li {
+  .share__list--popup li {
     line-height: 46px;
     margin-right: 16px;
     margin-left: 0; }
-  .share--list__popup a {
+  .share__list--popup a {
     padding: 8px; }
-  .share--list__popup:before, .share--list__popup:after {
+  .share__list--popup:before, .share__list--popup:after {
     left: 24px; }
 
-.share--popup__active .skycon-share, .share--summary:hover .skycon-share {
+.share__popup--active .skycon-share, .share__summary:hover .skycon-share {
   color: #0073c5; }
-.share--popup__active .share-word, .share--summary:hover .share-word {
+.share__popup--active .share-word, .share__summary:hover .share-word {
   text-decoration: underline; }
 
-.share--popup__active .share--list {
+.share__popup--active .share__list {
   display: block;
   box-shadow: 2px 1px 3px rgba(0, 0, 0, 0.15); }
 
-.share--list__top {
+.share__list--top {
   box-shadow: -2px -1px 3px rgba(0, 0, 0, 0.15);
   top: auto;
   bottom: 0.8em; }
-  .share--list__top:before {
+  .share__list--top:before {
     content: "";
     position: absolute;
     top: 100%;
@@ -154,7 +387,7 @@
     border: 10px solid transparent;
     border-top-color: #CCC;
     z-index: 1; }
-  .share--list__top:after {
+  .share__list--top:after {
     content: "";
     position: absolute;
     top: 100%;
@@ -165,12 +398,12 @@
     border: 9px solid transparent;
     border-top-color: #FFF;
     z-index: 2; }
-  .share--list__top:before, .share--list__top:after {
+  .share__list--top:before, .share__list--top:after {
     left: 24px; }
 
-.share--list__left {
+.share__list--left {
   left: auto;
   right: 0; }
-  .share--list__left:before, .share--list__left:after {
+  .share__list--left:before, .share__list--left:after {
     left: auto;
     right: 24px; }

@@ -1,23 +1,26 @@
-.share--popup {
+@import 'bower_components/bskyb-colours/src/scss/colours';
+@import 'utils';
+
+.share__popup {
   position: relative;
   margin-top: 10px;
 }
 
-.share--word {
+.share__word {
   margin-left: 8px;
   margin-right: 8px;
 }
 
-.share--count {
+.share__count {
   font-family: Helvetica, Arial;
   font-size: 0.75em;
   color: #666;
 }
-.share--count__main {
+.share__count--main {
   color: $link;
 }
 
-.share--summary {
+.share__summary {
   text-decoration: none;
   float: left;
   cursor: pointer;
@@ -27,7 +30,7 @@
   position: relative;
 }
 
-.share--list__popup {
+.share__list--popup {
   @include pointer-bordered(top, #FFF, #CCC);
   position: absolute;
   display: none;
@@ -54,8 +57,8 @@
 }
 
 
-.share--popup__active,
-.share--summary:hover {
+.share__popup--active,
+.share__summary:hover {
   & .skycon-share {
     color: #0073c5;
   }
@@ -67,14 +70,14 @@
 
 
 
-.share--popup__active .share--list {
+.share__popup--active .share__list {
   display: block;
   box-shadow : 2px 1px 3px rgba(0, 0, 0, 0.15);
 }
 
 
 
-.share--list__top {
+.share__list--top {
   box-shadow : -2px -1px 3px rgba(0, 0, 0, 0.15);
   @include pointer-bordered(bottom, #FFF, #CCC);
   top: auto;
@@ -85,7 +88,7 @@
   }
 }
 
-.share--list__left {
+.share__list--left {
   left: auto;
   right: 0;
   &:before,

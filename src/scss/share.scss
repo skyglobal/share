@@ -1,9 +1,9 @@
 //Import any bower dependencies as so:
-//@import 'bower_components/bskyb-skycons/dist/scss/skycons';
-@import 'bower_components/bskyb-colours/dist/scss/colours';
+@import 'bower_components/bskyb-skycons/dist/scss/skycons';
+@import 'bower_components/bskyb-colours/src/scss/colours';
 @import 'utils';
 
-.share--list {
+.share__list {
   display: inline;
   margin-left: 30px;
 

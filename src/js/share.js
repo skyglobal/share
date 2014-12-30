@@ -85,13 +85,13 @@ function parent(el, selector) {
 
 function toggleSharePopover(e) {
     e.preventDefault();
-    var section = parent(this, '.share--popup'),
-        popover = section.getElementsByClassName('share--list'),
+    var section = parent(this, '.share__popup'),
+        popover = section.getElementsByClassName('share__list'),
         triggerEvents = 'keypress ' + ('ontouchend' in document.documentElement ? 'touchend' : 'click');
     if(e.type === 'click' || e.type === 'touchend' || (e.type === 'keypress' && e.which === 13)) {
-        toggleClass(section, 'share--popup__active');
-        toggleClass(popover[0], "share--list__left", !elementVisibleRight(popover[0]));
-        toggleClass(popover[0], "share--list__top", !elementVisibleBottom(popover[0]));
+        toggleClass(section, 'share__popup--active');
+        toggleClass(popover[0], "share__list--left", !elementVisibleRight(popover[0]));
+        toggleClass(popover[0], "share__list--top", !elementVisibleBottom(popover[0]));
 
         event.on(document, triggerEvents, function hidePopover(e) {
             if(!contains(section, e.target)) {
@@ -116,8 +116,8 @@ function popupLink(e) {
 }
 
 function bindEvents() {
-    event.live('click', '.share--summary', toggleSharePopover);
-    event.live('click', '.share--social-link', popupLink);
+    event.live('click', '.share__summary', toggleSharePopover);
+    event.live('click', '.share__social-link', popupLink);
 }
 
 module.exports = {
