@@ -9,7 +9,8 @@ See http://skyglobal.github.io/share/ for a demo of the Component
 
  * `CSS` : http://web-toolkit.global.sky.com/components/share/0.0.4/css/share.css
  * `JS` : http://web-toolkit.global.sky.com/components/share/0.0.4/js/share.js
- * `HTML` :  Plesse take a look at the [demo page](http://skyglobal.github.io/share/)
+ * `HTML` :  Please take a look at the [demo page](http://skyglobal.github.io/share/)
+   * Dont forget to update the share `url` for each link!
  * Skycons : Please see [here](https://github.com/skyglobal/skycons) how to include them in your project.
 
 ### As a Sass Module / JS
