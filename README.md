@@ -12,7 +12,7 @@ Please take a look at the [demo page](http://skyglobal.github.io/share/) ( Dont 
 <script type="text/javascript" src="http://web-toolkit.global.sky.com/components/share/0.1.0/js/share.js"></script>
 ```
 
-##### Via Bower
+##### Alternatively, Via Bower
 
 ```
 bower install --save-dev bskyb-share
@@ -20,7 +20,7 @@ bower install --save-dev bskyb-share
 
 ### Dependencies
 
-  * This component relys on [Skycons](https://github.com/skyglobal/skycons).
+  * This component relies on [Skycons](https://github.com/skyglobal/skycons).
 
 ### Initialise
 
