@@ -19,6 +19,10 @@
 
 .share a {
   color: #666;
+  text-decoration: none;
+  &:hover{
+    text-decoration: underline;
+  }
 }
 
 
