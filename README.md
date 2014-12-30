@@ -5,18 +5,18 @@
 
 Please take a look at the [demo page](http://skyglobal.github.io/share/) ( Dont forget to update the share `url` for each link!)
 
-#### Static Resources
+##### Static Resources
 
 ```
 <link rel="stylesheet" href="http://web-toolkit.global.sky.com/components/share/0.1.0/css/share.css" />
 <script type="text/javascript" src="http://web-toolkit.global.sky.com/components/share/0.1.0/js/share.js"></script>
 ```
 
-#### Via Bower
+##### Via Bower
 
- * `bower install --save-dev bskyb-share`
- * Skycons Sass: Please see [here](https://github.com/skyglobal/skycons#via-bower) how to include them in your project.
-
+```
+bower install --save-dev bskyb-share
+```
 
 ### Dependencies
 
