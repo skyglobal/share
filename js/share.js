@@ -84,8 +84,8 @@ skyComponents.event = module.exports;
 var eventRegistry = {};
 var state = {    };
 var browserSpecificEvents = {
-    'transitionend': check('transition', 'end'),
-    'animationend': check('animation', 'end')
+    'transitionend': 'transition',
+    'animationend': 'animation'
 };
 
 function capitalise(str) {
@@ -94,40 +94,43 @@ function capitalise(str) {
     });
 }
 
-function check(eventName, type) {
+function check(eventName) {
+    var type = '';
+    if (browserSpecificEvents[eventName]){
+        eventName =  browserSpecificEvents[eventName];
+        type = 'end';
+    }
     var result = false,
         eventType = eventName.toLowerCase() + type.toLowerCase(),
         eventTypeCaps = capitalise(eventName.toLowerCase()) + capitalise(type.toLowerCase());
     if (state[eventType]) {
         return state[eventType];
     }
-    if ('on' + eventType in window) {
-        result = eventType;
-    } else if ('onwebkit' + eventType in window) {
-        result = 'webkit' + eventTypeCaps;
-    } else if ('ono' + eventType in document.documentElement) {
-        result = 'o' + eventTypeCaps;
-    }
+    ['ms', 'moz', 'webkit', 'o', ''].forEach(function(prefix){
+        if (('on' + prefix + eventType in window) ||
+            ('on' + prefix + eventType in document.documentElement)) {
+            result = (!!prefix) ? prefix + eventTypeCaps : eventType;
+        }
+    });
+    state[eventType] = result;
     return result;
 }
 
 function off(el, eventName, eventHandler) {
+    eventName = check(eventName) || eventName;
     if (el.removeEventListener) {
         el.removeEventListener(eventName, eventHandler, false);
     } else {
-        var browserSpecificEventName = browserSpecificEvents[eventName.toLowerCase()];
-        eventName = browserSpecificEventName || eventName;
-        el.detachEvent(eventName, eventHandler);
+        el.detachEvent('on' + eventName, eventHandler);
     }
 }
 
 function on(el, eventName, eventHandler, useCapture) {
+    eventName = check(eventName) || eventName;
     if (el.addEventListener) {
         el.addEventListener(eventName, eventHandler, !!useCapture);
     } else {
-        var browserSpecificEventName = browserSpecificEvents[eventName.toLowerCase()];
-        eventName = browserSpecificEventName || eventName;
-        el.attachEvent(eventName, eventHandler);
+        el.attachEvent('on' + eventName, eventHandler);
     }
 }
 
@@ -260,13 +263,13 @@ function parent(el, selector) {
 
 function toggleSharePopover(e) {
     e.preventDefault();
-    var section = parent(this, '.share--popup'),
-        popover = section.getElementsByClassName('share--list'),
+    var section = parent(this, '.share__popup'),
+        popover = section.getElementsByClassName('share__list'),
         triggerEvents = 'keypress ' + ('ontouchend' in document.documentElement ? 'touchend' : 'click');
     if(e.type === 'click' || e.type === 'touchend' || (e.type === 'keypress' && e.which === 13)) {
-        toggleClass(section, 'share--popup__active');
-        toggleClass(popover[0], "share--list__left", !elementVisibleRight(popover[0]));
-        toggleClass(popover[0], "share--list__top", !elementVisibleBottom(popover[0]));
+        toggleClass(section, 'share__popup--active');
+        toggleClass(popover[0], "share__list--left", !elementVisibleRight(popover[0]));
+        toggleClass(popover[0], "share__list--top", !elementVisibleBottom(popover[0]));
 
         event.on(document, triggerEvents, function hidePopover(e) {
             if(!contains(section, e.target)) {
@@ -291,8 +294,8 @@ function popupLink(e) {
 }
 
 function bindEvents() {
-    event.live('click', '.share--summary', toggleSharePopover);
-    event.live('click', '.share--social-link', popupLink);
+    event.live('click', '.share__summary', toggleSharePopover);
+    event.live('click', '.share__social-link', popupLink);
 }
 
 module.exports = {

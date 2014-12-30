@@ -5,15 +5,13 @@
     <title>Share</title>
 
     <link rel="stylesheet" href="css/demo.css"/>
-
-    <link rel="stylesheet" href="http://web-toolkit.global.sky.com/components/skycons/0.0.4/css/skycons.css"/>
-
     <link rel="stylesheet" href="css/share.css"/>
+    <link rel="stylesheet" href="http://web-toolkit.global.sky.com/components/skycons/0.2.0/css/skycons.css"/>
     <script type="text/javascript" src="js/share.js"></script>
 
 </head>
 <body>
-
+<div class="skycom-container">
 <h1>Share
     <small  class="demo-version text--secondary">v0.0.4
         <a href="https://github.com/skyglobal/share" class="text--secondary">
@@ -21,9 +19,6 @@
             <span class="speak">Github Repo</span>
         </a></small>
 </h1>
-
-<div class="notes">
-    Ensure that href for all the social links match the 'share' urls as per the example e.g. <code>https://twitter.com/intent/tweet?url=</code>
 </div>
 
 
@@ -31,55 +26,62 @@
     skyComponents.share.init();
 </script>
 
-<section class="share share--bar">
-    <h3 class="share--title">Share this page</h3>
-    <ul class="share--list">
-        <li>
-            <a class='share--social-link skycon--colour__hover' target='_blank' href='https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2F0.0.44.145%3A8080%2Fhp%2F%3Fshared%3Dtrue'>
-                <i aria-hidden=true class='skycon skycon--facebook'></i><span class="share--name">Facebook</span>
-            </a>
-        </li>
-        <li>
-            <a class='share--social-link skycon--colour__hover'  target='_blank' href='https://twitter.com/intent/tweet?url=http%3A%2F%2F0.0.44.145%3A8080%2Fhp%2F%3Fshared%3Dtrue&text=Sky.com Homepage'>
-                <i aria-hidden=true class='skycon skycon--twitter'></i><span class="share--name">Twitter</span>
-            </a>
-        </li>
-        <li >
-            <a class='share--social-link skycon--colour__hover' target='_blank' href='https://plus.google.com/share?url=http%3A%2F%2F0.0.44.145%3A8080%2Fhp%2F%3Fshared%3Dtrue'>
-                <i aria-hidden=true class='skycon skycon--google-plus'></i><span class="share--name">Google+</span>
-            </a>
-        </li>
-        <li>
-            <a class='skycon--colour__hover' target='_blank' href='mailto:?subject=Sharing - Sky.com Homepage&body=http%3A%2F%2Fwww.sky.com0%2Fhp%2F%3Fshared%3Dtrue'>
-                <i aria-hidden=true class='skycon skycon--mail'></i><span class="share--name" >Mail</span>
-            </a>
-        </li>
-    </ul>
-</section>
-<div class="share share--popup clearfix">
-    <a class="share--summary hover-colour" href="#!" data-tracking-context="Shared article title" aria-label="Shared 146 times. Click to show share options">
-        <i class="skycon-share"></i><span class="share--word" aria-hidden="true">Share</span><span class="share--count share--count__main" aria-hidden="true">146</span>
-    </a>
-    <ul class="share--list share--list__popup">
-        <li >
-            <a class='share--social-link skycon--colour__hover' target='_blank' href='https://twitter.com/intent/tweet?url=http%3A%2F%2Fnews.sky.com%2Fstory%2F1066004%2Fcyprus-bailout-savings-shift-amid-russia-offer&text=Cyprus Bailout: Savings Shift Amid Russia Offer'>
-                <i aria-hidden=true class='skycon skycon--twitter'></i><span class='speak '>Twitter</span>
-            </a><span class='share--count'>137</span>
-        </li>
-        <li >
-            <a class='share--social-link skycon--colour__hover' target='_blank' href='https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fapps.facebook.com%2Fskynewsfb%2Farticle.php%3Fid%3D1066004'>
-                <i aria-hidden=true class='skycon skycon--facebook'></i><span class='speak '>Facebook</span>
-            </a><span class='share--count'>5</span>
-        </li>
-        <li >
-            <a class='share--social-link skycon--colour__hover' target='_blank' href='https://plus.google.com/share?url=http%3A%2F%2Fnews.sky.com%2Fstory%2F1066004%2Fcyprus-bailout-savings-shift-amid-russia-offer'>
-                <i aria-hidden=true class='skycon skycon--google-plus'></i><span class='speak'>Google+</span>
-            </a><span class='share--count'>4</span>
-        </li>
-        <li >
-            <a class='skycon--colour__hover' target='_blank' href='mailto:?subject=Sharing - Cyprus Bailout: Savings Shift Amid Russia Offer&body=http%3A%2F%2Fnews.sky.com%2Fstory%2F1066004%2Fcyprus-bailout-savings-shift-amid-russia-offer'>
-                <i aria-hidden=true class='skycon skycon--mail'></i><span class='speak'>Mail</span>
-            </a>
-        </li>
-    </ul>
+<div class="skycom-container">
+<h1>Bar</h1>
+    <section class="share share__bar">
+        <h3 class="share__title">Share this page</h3>
+        <ul class="share__list">
+            <li>
+                <a class='share__social-link skycon--hover' target='_blank' href='https://www.facebook.com/sharer/sharer.php?u=url-encoded-web-address'>
+                    <i aria-hidden=true class='skycon skycon--facebook'></i><span class="share__name">Facebook</span>
+                </a>
+            </li>
+            <li>
+                <a class='share__social-link skycon--hover'  target='_blank' href='https://twitter.com/intent/tweet?url=url-encoded-web-addess&text=url-encoded-page-title'>
+                    <i aria-hidden=true class='skycon skycon--twitter'></i><span class="share__name">Twitter</span>
+                </a>
+            </li>
+            <li >
+                <a class='share__social-link skycon--hover' target='_blank' href='https://plus.google.com/share?url=url-encoded-web-addess'>
+                    <i aria-hidden=true class='skycon skycon--google-plus'></i><span class="share__name">Google+</span>
+                </a>
+            </li>
+            <li>
+                <a class='skycon--hover' target='_blank' href='mailto:?subject=page-title&body=url-encoded-web-addess'>
+                    <i aria-hidden=true class='skycon skycon--mail'></i><span class="share__name" >Mail</span>
+                </a>
+            </li>
+        </ul>
+    </section>
+</div>
+<div class="skycom-container">
+<h1>Popup</h1>
+    <div class="share share__popup clearfix">
+        <a class="share__summary skycon--hover" href="#!" data-tracking-context="Shared article title" aria-label="Shared 146 times. Click to show share options">
+            <i class="skycon--share"></i><span class="share__word" aria-hidden="true">Share</span><span class="share__count share__count--main" aria-hidden="true">146</span>
+        </a>
+        <ul class="share__list share__list--popup">
+            <li >
+                <a class='share__social-link skycon--hover' target='_blank' href='https://twitter.com/intent/tweet?url=url-encoded-page-url&text=page-title'>
+                    <i aria-hidden=true class='skycon skycon--twitter'></i><span class='speak '>Twitter</span>
+                </a><span class='share__count'>137</span>
+            </li>
+            <li >
+                <a class='share__social-link skycon--hover' target='_blank' href='https://www.facebook.com/sharer/sharer.php?u=url-encoded-web-addess'>
+                    <i aria-hidden=true class='skycon skycon--facebook'></i><span class='speak '>Facebook</span>
+                </a><span class='share__count'>5</span>
+            </li>
+            <li >
+                <a class='share__social-link skycon--hover' target='_blank' href='https://plus.google.com/share?url=url-encoded-web-addess'>
+                    <i aria-hidden=true class='skycon skycon--google-plus'></i><span class='speak'>Google+</span>
+                </a><span class='share__count'>4</span>
+            </li>
+            <li >
+                <a class='skycon--hover' target='_blank' href='mailto:?subject=page-title&body=url-encoded-web-addess'>
+                    <i aria-hidden=true class='skycon skycon--mail'></i><span class='speak'>Mail</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
 </div>
