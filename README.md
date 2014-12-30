@@ -1,35 +1,33 @@
 [Share](http://skyglobal.github.io/share/)
 ========================
 
-See http://skyglobal.github.io/share/ for a demo of the Component
+## Quick-Start
 
-## Usage
+Please take a look at the [demo page](http://skyglobal.github.io/share/) ( Dont forget to update the share `url` for each link!)
 
-### Quick-Start
-
-#### Resources
+#### Static Resources
 
 ```
 <link rel="stylesheet" href="http://web-toolkit.global.sky.com/components/share/0.1.0/css/share.css" />
 <script type="text/javascript" src="http://web-toolkit.global.sky.com/components/share/0.1.0/js/share.js"></script>
 ```
 
-Please take a look at the [demo page](http://skyglobal.github.io/share/) ( Dont forget to update the share `url` for each link!)
+#### Via Bower
 
-#### Dependencies
+ * `bower install --save-dev bskyb-share`
+ * Skycons Sass: Please see [here](https://github.com/skyglobal/skycons#via-bower) how to include them in your project.
 
-  * This component relys on [Skycons](https://github.com/skyglobal/skycons#quick-start).
 
-#### Initialise
+### Dependencies
+
+  * This component relys on [Skycons](https://github.com/skyglobal/skycons).
+
+### Initialise
 
 ```
 <script type="text/javascript"> skyComponents.share.init(); </script>
 ```
 
-### As a Sass Module / JS
-
- * `bower install --save-dev bskyb-share`
- * Skycons Sass: Please see [here](https://github.com/skyglobal/skycons#via-bower) how to include them in your project.
 
 ## Contribution
 
