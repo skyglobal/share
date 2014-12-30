@@ -7,14 +7,20 @@ See http://skyglobal.github.io/share/ for a demo of the Component
 
 ### Quick-Start
 
- * Resources
-   * `<link rel="stylesheet" href="http://web-toolkit.global.sky.com/components/share/0.1.0/css/share.css" />`
-   * `<script type="text/javascript" src="http://web-toolkit.global.sky.com/components/share/0.1.0/js/share.js"></script>`
-   * `HTML` :  Please take a look at the [demo page](http://skyglobal.github.io/share/) ( Dont forget to update the share `url` for each link!)
- * Dependencies
-   * Skycons CSS: Please see [here](https://github.com/skyglobal/skycons#quick-start) how to include them in your project.
- * Initialise
-   * <script type="text/javascript"> `skyComponents.share.init();` </script>
+#### Resources
+
+`<link rel="stylesheet" href="http://web-toolkit.global.sky.com/components/share/0.1.0/css/share.css" />`
+`<script type="text/javascript" src="http://web-toolkit.global.sky.com/components/share/0.1.0/js/share.js"></script>`
+
+Please take a look at the [demo page](http://skyglobal.github.io/share/) ( Dont forget to update the share `url` for each link!)
+
+#### Dependencies
+
+  * [Skycons CSS](https://github.com/skyglobal/skycons#quick-start): You must include Skycons.
+
+#### Initialise
+
+`<script type="text/javascript"> skyComponents.share.init(); </script>`
 
 ### As a Sass Module / JS
 
