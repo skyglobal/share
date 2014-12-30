@@ -22,7 +22,7 @@ bower install --save-dev bskyb-share
 
   * This component relies on [Skycons](https://github.com/skyglobal/skycons).
 
-### Dev Notes:
+## Dev Notes:
 
 Choose which type of `share` component you would like and copy the relevant html, [bar](demo/_includes/bar.html) or [popup](demo/_includes/popup.html).  Dont forget to update the share `url` for each link!
 
