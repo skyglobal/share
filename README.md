@@ -18,11 +18,13 @@ Please take a look at the [demo page](http://skyglobal.github.io/share/) ( Dont 
 
 #### Dependencies
 
-  * [Skycons CSS](https://github.com/skyglobal/skycons#quick-start): You must include Skycons.
+  * This component relys on [Skycons](https://github.com/skyglobal/skycons#quick-start).
 
 #### Initialise
 
-`<script type="text/javascript"> skyComponents.share.init(); </script>`
+```
+<script type="text/javascript"> skyComponents.share.init(); </script>
+```
 
 ### As a Sass Module / JS
 
