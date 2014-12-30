@@ -11,11 +11,12 @@ See http://skyglobal.github.io/share/ for a demo of the Component
  * `JS` : http://web-toolkit.global.sky.com/components/share/0.1.0/js/share.js
  * `HTML` :  Please take a look at the [demo page](http://skyglobal.github.io/share/)
    * Dont forget to update the share `url` for each link!
- * Skycons : Please see [here](https://github.com/skyglobal/skycons) how to include them in your project.
+ * Skycons CSS : Please see [here](https://github.com/skyglobal/skycons#quick-start) how to include them in your project.
 
 ### As a Sass Module / JS
 
-`bower install --save-dev bskyb-share`
+ * `bower install --save-dev bskyb-share`
+ * Skycons Sass: Please see [here](https://github.com/skyglobal/skycons#via-bower) how to include them in your project.
 
 ### Locally
 
