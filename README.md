@@ -24,7 +24,7 @@ bower install --save-dev bskyb-share
 
 ## Dev Notes:
 
-Choose which type of `share` component you would like and copy the relevant html, [bar](demo/_includes/bar.html) or [popup](demo/_includes/popup.html).  Dont forget to update the share `url` for each link!
+Choose which type of Share component you would like and copy the relevant html, [bar](demo/_includes/bar.html) or [popup](demo/_includes/popup.html).  Dont forget to update the share `url` for each link!
 
 ##### Initialise
 
