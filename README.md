@@ -1,9 +1,9 @@
 [Share](http://skyglobal.github.io/share/)
 ========================
 
-## Quick-Start
+> Please take a look at the [demo page](http://skyglobal.github.io/share/)
 
-Please take a look at the [demo page](http://skyglobal.github.io/share/) ( Dont forget to update the share `url` for each link!)
+## Quick-Start
 
 ##### Static Resources
 
@@ -22,7 +22,11 @@ bower install --save-dev bskyb-share
 
   * This component relies on [Skycons](https://github.com/skyglobal/skycons).
 
-### Initialise
+### Dev Notes:
+
+Choose which type of `share` component you would like and copy the relevant html, [bar](demo/_includes/bar.html) or [popup](demo/_includes/popup.html).  Dont forget to update the share `url` for each link!
+
+##### Initialise
 
 ```
 <script type="text/javascript"> skyComponents.share.init(); </script>
