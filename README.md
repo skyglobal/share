@@ -5,26 +5,24 @@
 
 ## Quick-Start
 
-Choose which type of Share component you would like and copy the relevant html, [bar](demo/_includes/bar.html) or [popup](demo/_includes/popup.html).  Dont forget to update the share `url` for each link.
+Choose which type of Share component you would like and copy the relevant html, [bar](demo/_includes/bar.html) or [popup](demo/_includes/popup.html), updating the share `url` for each link.
 
-##### Static Resources
+Include the Share assets in your project either as **Static Resources**
 
 ```
 <link rel="stylesheet" href="http://web-toolkit.global.sky.com/components/share/0.1.0/css/share.css" />
 <script type="text/javascript" src="http://web-toolkit.global.sky.com/components/share/0.1.0/js/share.js"></script>
 ```
 
-##### Alternatively, Via Bower
+or alternatively, **Via Bower**
 
 ```
 bower install --save-dev bskyb-share
 ```
 
-### Dependencies
+This component relies on [Skycons](https://github.com/skyglobal/skycons) and you must also include these in your project.
 
-  * This component relies on [Skycons](https://github.com/skyglobal/skycons).
-
-### Initialise
+To enable the widgets to open in a pop-up, the JS must be initialised:
 
 ```
 <script type="text/javascript"> skyComponents.share.init(); </script>
