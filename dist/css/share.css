@@ -19,7 +19,10 @@
       display: inline; }
 
 .share a {
-  color: #666; }
+  color: #666;
+  text-decoration: none; }
+  .share a:hover {
+    text-decoration: underline; }
 
 .share__bar {
   border-top: 1px solid #C0C0C0;

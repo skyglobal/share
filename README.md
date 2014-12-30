@@ -23,13 +23,13 @@ or alternatively, **Via Bower**
 
 This component relies on other components and you must also include these in your project.
 
-* [Skycons](https://github.com/skyglobal/skycons)
+ * [Skycons](https://github.com/skyglobal/skycons)
 
-#### Share Types
+#### Developer Notes
 
 Choose a type of Share component and copy the relevant html, updating the share `url` for each link.
-  * [bar](demo/_includes/bar.html) 
-  * [popup](demo/_includes/popup.html), 
+ * [bar](demo/_includes/bar.html)
+ * [popup](demo/_includes/popup.html),
 
 #### Initialise
 
