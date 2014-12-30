@@ -9,8 +9,10 @@ See http://skyglobal.github.io/share/ for a demo of the Component
 
 #### Resources
 
-`<link rel="stylesheet" href="http://web-toolkit.global.sky.com/components/share/0.1.0/css/share.css" />`
-`<script type="text/javascript" src="http://web-toolkit.global.sky.com/components/share/0.1.0/js/share.js"></script>`
+```
+<link rel="stylesheet" href="http://web-toolkit.global.sky.com/components/share/0.1.0/css/share.css" />
+<script type="text/javascript" src="http://web-toolkit.global.sky.com/components/share/0.1.0/js/share.js"></script>
+```
 
 Please take a look at the [demo page](http://skyglobal.github.io/share/) ( Dont forget to update the share `url` for each link!)
 
