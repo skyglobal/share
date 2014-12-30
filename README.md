@@ -7,8 +7,8 @@ See http://skyglobal.github.io/share/ for a demo of the Component
 
 ### Quick-Start
 
- * `CSS` : http://web-toolkit.global.sky.com/components/share/0.0.4/css/share.css
- * `JS` : http://web-toolkit.global.sky.com/components/share/0.0.4/js/share.js
+ * `CSS` : http://web-toolkit.global.sky.com/components/share/0.1.0/css/share.css
+ * `JS` : http://web-toolkit.global.sky.com/components/share/0.1.0/js/share.js
  * `HTML` :  Please take a look at the [demo page](http://skyglobal.github.io/share/)
    * Dont forget to update the share `url` for each link!
  * Skycons : Please see [here](https://github.com/skyglobal/skycons) how to include them in your project.
