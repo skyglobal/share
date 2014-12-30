@@ -14,9 +14,10 @@ Include the Share assets in your project either as **Static Resources**
 
 or alternatively, **Via Bower**
 
-```
-bower install --save-dev bskyb-share
-```
+ * Run: `bower install --save-dev bskyb-skycons`
+ * Include Sass: `@import 'bower_components/bskyb-share/src/scss/share';`
+ * Include JS: `var share = require('../../bower_components/bskyb-share/src/js/share');`
+
 
 #### Dependencies 
 
