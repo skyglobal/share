@@ -18,7 +18,11 @@ or alternatively, **Via Bower**
 bower install --save-dev bskyb-share
 ```
 
-This component relies on [Skycons](https://github.com/skyglobal/skycons) and you must also include these in your project.
+#### Dependencies 
+
+This component relies on other components and you must also include these in your project.
+
+* [Skycons](https://github.com/skyglobal/skycons)
 
 #### Share Types
 
