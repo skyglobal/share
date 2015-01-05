@@ -8,18 +8,12 @@ function getElementOffset(el) {
 }
 
 function elementVisibleBottom(el) {
-    if (el.length < 1){
-        return;
-    }
     var elementOffset = getElementOffset(el);
     var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
     return (elementOffset.top + el.offsetHeight <= scrollTop + document.documentElement.clientHeight);
 }
 
 function elementVisibleRight(el) {
-    if (el.length < 1) {
-        return;
-    }
     var elementOffset = getElementOffset(el);
     return (elementOffset.left + el.offsetWidth <= document.documentElement.clientWidth);
 }
@@ -48,13 +42,14 @@ function toggleClass(el, className, force){
     } else if (el.classList) {
         return el.classList.toggle(className);
     }
+
     var classes = el.className.split(' ');
     var existingIndex = classes.indexOf(className);
 
     if (existingIndex >= 0){
-        removeClass(el, className);
+        return removeClass(el, className);
     } else if (existingIndex <0) {
-        addClass(el, className);
+        return addClass(el, className);
     }
 }
 
@@ -72,10 +67,6 @@ function matches(el, selector){
 
 function parent(el, selector) {
     var p = el.parentNode;
-    if (!selector){
-        return p;
-    }
-
     while (!matches(p, selector) && p!==null) {
         p = p.parentNode;
     }
@@ -87,7 +78,7 @@ function toggleSharePopover(e) {
     e.preventDefault();
     var section = parent(this, '.share__popup'),
         popover = section.getElementsByClassName('share__list'),
-        triggerEvents = 'keypress touchend click'   ;
+        triggerEvents = 'keypress touchend click';
     if(e.type === 'click' || e.type === 'touchend' || (e.type === 'keypress' && e.which === 13)) {
         toggleClass(section, 'share__popup--active');
         toggleClass(popover[0], "share__list--left", !elementVisibleRight(popover[0]));
@@ -104,13 +95,12 @@ function toggleSharePopover(e) {
 
 function popupLink(e) {
     e.preventDefault();
-    var args = {};
     var url = (this.tagName === 'A') ? this : parent(this, 'a').getAttribute('href');
-    var width = args.width || 626;
-    var height = args.height || 436;
-    var top = args.top || (screen.height/2)-(height/2);
-    var left = args.left || (screen.width/2)-(width/2);
-    var windowTitle = args.title || 'Sky';
+    var width = 626;
+    var height = 436;
+    var top = (screen.height/2)-(height/2);
+    var left = (screen.width/2)-(width/2);
+    var windowTitle = 'Sky';
     return window.open(url, windowTitle, 'top=' + top + ',left=' + left + ',width=' + width + ',height='+ height);
 }
 
@@ -121,8 +111,11 @@ function bindEvents() {
 
 module.exports = {
     init: bindEvents,
-    _toggleSharePopover: toggleSharePopover
+    _toggleSharePopover: toggleSharePopover,
+    _toggleClass: toggleClass,
+    _popupLink: popupLink
 };
 
+/* istanbul ignore if */
 if (typeof skyComponents === "undefined") window.skyComponents = {};
 skyComponents.share = module.exports;
