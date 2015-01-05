@@ -1,4 +1,4 @@
-[Share](http://skyglobal.github.io/share/)
+[Share](http://skyglobal.github.io/share/) [![Circle CI](https://circleci.com/gh/skyglobal/share/tree/master.svg?style=svg)](https://circleci.com/gh/skyglobal/share/tree/master)
 ========================
 
 > Please take a look at the [demo page](http://skyglobal.github.io/share/)
