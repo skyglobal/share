@@ -1,7 +1,6 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 var utils = require('./utils');
 var timeout = { resize: null };
-NodeList.prototype.isNodeList = HTMLCollection.prototype.isNodeList = true;
 
 function bindEvents() {
     on(window, 'resize', initResizeEnd);
@@ -10,45 +9,10 @@ function bindEvents() {
 function initResizeEnd() {
     clearTimeout(timeout.resize);
     timeout.resize = setTimeout(function triggerResizeEnd() {
-        trigger(window, 'resizeend'); // raw JS version
-        if (typeof $ !== 'undefined') {
-            $(window).trigger('resizeend'); // jQuery version
-        }
+        trigger(window, 'resizeend');
     }, 200);
 }
 
-
-function on(el, eventName, eventHandler, useCapture){
-    if (el.isNodeList){
-        Array.prototype.forEach.call(el, function(element, i){
-            utils.on(element, eventName, eventHandler, useCapture)
-        });
-    } else {
-        utils.on(el, eventName, eventHandler, useCapture);
-    }
-}
-
-function off(el, eventName, eventHandler, useCapture) {
-    if (el.isNodeList){
-        Array.prototype.forEach.call(el, function(element, i){
-            utils.off(element, eventName, eventHandler, useCapture)
-        });
-    } else {
-        utils.off(el, eventName, eventHandler, useCapture)
-    }
-}
-
-function trigger(el, eventName) {
-    var event;
-    if (document.createEvent) {
-        event = document.createEvent('CustomEvent'); // MUST be 'CustomEvent'
-        event.initCustomEvent(eventName, false, false, null);
-        el.dispatchEvent(event);
-    } else {
-        event = document.createEventObject();
-        el.fireEvent('on' + eventName, event);
-    }
-}
 
 function ready(exec) {
     if (/in/.test(document.readyState)) {
@@ -60,9 +24,37 @@ function ready(exec) {
     }
 }
 
+function trigger(el, eventName) {
+    utils.dispatchEvent(el, eventName);
+}
+
 function live(events, selector, eventHandler){
     events.split(' ').forEach(function(eventName){
         utils.attachEvent(eventName, selector, eventHandler);
+    });
+}
+
+function off(el, eventNames, eventHandler) {
+    eventNames.split(' ').forEach(function(eventName) {
+        if (el.isNodeList) {
+            Array.prototype.forEach.call(el, function (element, i) {
+                utils.removeEventListener(element, eventName, eventHandler);
+            });
+        } else {
+            utils.removeEventListener(el, eventName, eventHandler);
+        }
+    });
+}
+
+function on(el, eventNames, eventHandler, useCapture) {
+    eventNames.split(' ').forEach(function(eventName) {
+        if (el.isNodeList){
+            Array.prototype.forEach.call(el, function(element, i){
+                utils.addEventListener(element, eventName, eventHandler, useCapture);
+            });
+        } else {
+            utils.addEventListener(el, eventName, eventHandler, useCapture);
+        }
     });
 }
 
@@ -87,6 +79,7 @@ var browserSpecificEvents = {
     'transitionend': 'transition',
     'animationend': 'animation'
 };
+NodeList.prototype.isNodeList = HTMLCollection.prototype.isNodeList = true;
 
 function capitalise(str) {
     return str.replace(/\b[a-z]/g, function () {
@@ -116,16 +109,20 @@ function check(eventName) {
     return result;
 }
 
-function off(el, eventName, eventHandler) {
+function dispatchEvent(el, eventName){
     eventName = check(eventName) || eventName;
-    if (el.removeEventListener) {
-        el.removeEventListener(eventName, eventHandler, false);
+    var event;
+    if (document.createEvent) {
+        event = document.createEvent('CustomEvent'); // MUST be 'CustomEvent'
+        event.initCustomEvent(eventName, false, false, null);
+        el.dispatchEvent(event);
     } else {
-        el.detachEvent('on' + eventName, eventHandler);
+        event = document.createEventObject();
+        el.fireEvent('on' + eventName, event);
     }
 }
 
-function on(el, eventName, eventHandler, useCapture) {
+function addEventListener(el, eventName, eventHandler, useCapture){
     eventName = check(eventName) || eventName;
     if (el.addEventListener) {
         el.addEventListener(eventName, eventHandler, !!useCapture);
@@ -134,18 +131,23 @@ function on(el, eventName, eventHandler, useCapture) {
     }
 }
 
-function contains(el, child){
-    return el !== child && el.contains(child);
+function removeEventListener(el, eventName, eventHandler){
+    eventName = check(eventName) || eventName;
+    if (el.removeEventListener) {
+        el.removeEventListener(eventName, eventHandler, false);
+    } else {
+        el.detachEvent('on' + eventName, eventHandler);
+    }
 }
 
-function dispatchEvent(event) {
+function dispatchLiveEvent(event) {
     var targetElement = event.target;
 
     eventRegistry[event.type].forEach(function (entry) {
         var potentialElements = document.querySelectorAll(entry.selector);
         var hasMatch = false;
-        Array.prototype.forEach.call(potentialElements, function(item){
-            if (contains(item, targetElement) || item === targetElement){
+        Array.prototype.forEach.call(potentialElements, function(el){
+            if (el.contains(targetElement) || el === targetElement){
                 hasMatch = true;
                 return;
             }
@@ -154,14 +156,14 @@ function dispatchEvent(event) {
         if (hasMatch) {
             entry.handler.call(targetElement, event);
         }
-    }.bind(this));
+    });
 
 }
 
 function attachEvent(eventName, selector, eventHandler){
     if (!eventRegistry[eventName]) {
         eventRegistry[eventName] = [];
-        on(document.documentElement, eventName, dispatchEvent, true);
+        addEventListener(document.documentElement, eventName, dispatchLiveEvent, true);
     }
 
     eventRegistry[eventName].push({
@@ -170,10 +172,12 @@ function attachEvent(eventName, selector, eventHandler){
     });
 }
 
+
 module.exports = {
+    dispatchEvent: dispatchEvent,
     attachEvent: attachEvent,
-    on: on,
-    off: off
+    addEventListener: addEventListener,
+    removeEventListener: removeEventListener
 };
 },{}],3:[function(require,module,exports){
 var event = require('../../bower_components/bskyb-event/src/js/event');
@@ -186,18 +190,12 @@ function getElementOffset(el) {
 }
 
 function elementVisibleBottom(el) {
-    if (el.length < 1){
-        return;
-    }
     var elementOffset = getElementOffset(el);
     var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
     return (elementOffset.top + el.offsetHeight <= scrollTop + document.documentElement.clientHeight);
 }
 
 function elementVisibleRight(el) {
-    if (el.length < 1) {
-        return;
-    }
     var elementOffset = getElementOffset(el);
     return (elementOffset.left + el.offsetWidth <= document.documentElement.clientWidth);
 }
@@ -226,13 +224,14 @@ function toggleClass(el, className, force){
     } else if (el.classList) {
         return el.classList.toggle(className);
     }
+
     var classes = el.className.split(' ');
     var existingIndex = classes.indexOf(className);
 
     if (existingIndex >= 0){
-        removeClass(el, className);
+        return removeClass(el, className);
     } else if (existingIndex <0) {
-        addClass(el, className);
+        return addClass(el, className);
     }
 }
 
@@ -250,10 +249,6 @@ function matches(el, selector){
 
 function parent(el, selector) {
     var p = el.parentNode;
-    if (!selector){
-        return p;
-    }
-
     while (!matches(p, selector) && p!==null) {
         p = p.parentNode;
     }
@@ -265,17 +260,16 @@ function toggleSharePopover(e) {
     e.preventDefault();
     var section = parent(this, '.share__popup'),
         popover = section.getElementsByClassName('share__list'),
-        triggerEvents = 'keypress ' + ('ontouchend' in document.documentElement ? 'touchend' : 'click');
+        triggerEvents = 'keypress touchend click';
     if(e.type === 'click' || e.type === 'touchend' || (e.type === 'keypress' && e.which === 13)) {
         toggleClass(section, 'share__popup--active');
         toggleClass(popover[0], "share__list--left", !elementVisibleRight(popover[0]));
         toggleClass(popover[0], "share__list--top", !elementVisibleBottom(popover[0]));
 
-        event.on(document, triggerEvents, function hidePopover(e) {
-            if(!contains(section, e.target)) {
-                removeClass(section, 'active');
-                event.off(document, triggerEvents, hidePopover);
-            }
+        event.on(document.documentElement, triggerEvents, function hidePopover(e) {
+            if(contains(section, e.target)) { return; }
+            removeClass(section, 'share__popup--active');
+            event.off(document, triggerEvents, hidePopover);
         });
     }
 }
@@ -283,13 +277,12 @@ function toggleSharePopover(e) {
 
 function popupLink(e) {
     e.preventDefault();
-    var args = {}
     var url = (this.tagName === 'A') ? this : parent(this, 'a').getAttribute('href');
-    var width = args.width || 626;
-    var height = args.height || 436;
-    var top = args.top || (screen.height/2)-(height/2);
-    var left = args.left || (screen.width/2)-(width/2);
-    var windowTitle = args.title || 'Sky';
+    var width = 626;
+    var height = 436;
+    var top = (screen.height/2)-(height/2);
+    var left = (screen.width/2)-(width/2);
+    var windowTitle = 'Sky';
     return window.open(url, windowTitle, 'top=' + top + ',left=' + left + ',width=' + width + ',height='+ height);
 }
 
@@ -300,9 +293,12 @@ function bindEvents() {
 
 module.exports = {
     init: bindEvents,
-    toggleSharePopover: toggleSharePopover
+    _toggleSharePopover: toggleSharePopover,
+    _toggleClass: toggleClass,
+    _popupLink: popupLink
 };
 
+/* istanbul ignore if */
 if (typeof skyComponents === "undefined") window.skyComponents = {};
 skyComponents.share = module.exports;
 },{"../../bower_components/bskyb-event/src/js/event":1}],4:[function(require,module,exports){
