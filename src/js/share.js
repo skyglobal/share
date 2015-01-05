@@ -105,7 +105,7 @@ function toggleSharePopover(e) {
 
 function popupLink(e) {
     e.preventDefault();
-    var args = {}
+    var args = {};
     var url = (this.tagName === 'A') ? this : parent(this, 'a').getAttribute('href');
     var width = args.width || 626;
     var height = args.height || 436;
