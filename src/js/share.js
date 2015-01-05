@@ -87,17 +87,16 @@ function toggleSharePopover(e) {
     e.preventDefault();
     var section = parent(this, '.share__popup'),
         popover = section.getElementsByClassName('share__list'),
-        triggerEvents = 'keypress ' + ('ontouchend' in document.documentElement ? 'touchend' : 'click');
+        triggerEvents = 'keypress touchend click'   ;
     if(e.type === 'click' || e.type === 'touchend' || (e.type === 'keypress' && e.which === 13)) {
         toggleClass(section, 'share__popup--active');
         toggleClass(popover[0], "share__list--left", !elementVisibleRight(popover[0]));
         toggleClass(popover[0], "share__list--top", !elementVisibleBottom(popover[0]));
 
-        event.on(document, triggerEvents, function hidePopover(e) {
-            if(!contains(section, e.target)) {
-                removeClass(section, 'active');
-                event.off(document, triggerEvents, hidePopover);
-            }
+        event.on(document.documentElement, triggerEvents, function hidePopover(e) {
+            if(contains(section, e.target)) { return; }
+            removeClass(section, 'share__popup--active');
+            event.off(document, triggerEvents, hidePopover);
         });
     }
 }
@@ -122,7 +121,7 @@ function bindEvents() {
 
 module.exports = {
     init: bindEvents,
-    toggleSharePopover: toggleSharePopover
+    _toggleSharePopover: toggleSharePopover
 };
 
 if (typeof skyComponents === "undefined") window.skyComponents = {};

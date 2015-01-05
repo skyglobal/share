@@ -17,19 +17,10 @@ describe('Share module with click', function () {
         expect(popup.className).not.toMatch(/active/);
     });
 
-    xit(' Pressing enter on share link should open popup', function () {
-        expect(popup.className).not.toMatch(/active/);
-        event.trigger(share, 'keypress', 13);
-        expect(popup.className).toMatch(/active/);
-        event.trigger(share, 'keypress', {which: 13});
+    it('clicking anywhere will close an open popup', function () {
+        event.trigger(share,'click');
+        event.trigger(document.documentElement,'click');
         expect(popup.className).not.toMatch(/active/);
     });
 
-    xit('Pressing any key should not open share popup', function () {
-        expect(popup.className).not.toMatch(/active/);
-        var e = jQuery.Event("keypress");
-        e.which = 12; // # Some key code value
-        $(".summary").trigger(e);
-        expect(popup.className).not.toMatch(/active/);
-    });
 });

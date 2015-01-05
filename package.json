@@ -6,9 +6,7 @@
   "devDependencies": {
     "browser-sync": "^1.5.9",
     "gulp": "^3.8.10",
-    "gulp-component-helper": "^0.4.1",
-    "karma": "^0.12.30",
-    "karma-html2js-preprocessor": "^0.1.0",
+    "gulp-component-helper": "^0.4.2",
     "run-sequence": "^1.0.1"
   },
   "repository": {

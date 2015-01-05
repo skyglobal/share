@@ -1,7 +1,7 @@
 module.exports = function(config) {
     return config.set({
         basePath: '..',
-        browsers: ['Chrome'],
+        browsers: ['PhantomJS'],
         frameworks: ['commonjs', 'jasmine'],
         reporters: ['progress', 'coverage'],
         preprocessors: {
@@ -31,7 +31,7 @@ module.exports = function(config) {
             {pattern: '_site/index.html', watched: false },
             {pattern: 'bower_components/*/src/**/*.js', included: true },
             'src/**/*.js',
-            'test/**/*.spec.js'
+            'test/specs/**/*.spec.js'
         ],
         exclude: [
             'src/**/*.requirejs.js'

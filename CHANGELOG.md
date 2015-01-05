@@ -1,5 +1,17 @@
 # Change Log
   
+## 0.1.1
+
+  * Fixed closing the share-popup to close when elsewhere is clicked
+
+## 0.1.0
+
+  * Updated css to BEM
+
+## 0.0.4
+
+  * Updated `skycon` dependency to be external
+
 ## 0.0.3
 
   * Added compiled code for bower
