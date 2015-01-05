@@ -58,6 +58,7 @@ function contains(el, child){
 }
 
 function matches(el, selector){
+    /* istanbul ignore next | browser specific code hard to test in phantom! */
     var fn = el.matches || el.webkitMatchesSelector || el.mozMatchesSelector || el.msMatchesSelector;
     if (!fn)  { //no 'matches' on document.documentElement
         return;
