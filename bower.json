@@ -1,25 +1,26 @@
 {
-    "name": "bskyb-share",
-    "version": "0.1.1",
-    "homepage": "https://github.com/skyglobal/share",
-    "authors": [
-        "Peter Mouland <peter.mouland@gmail.com>"
-    ],
-    "description": "share",
-    "main": "src/share.js",
-    "license": "BSD3",
-    "ignore": [
-        "**/*",
-        "!dist/**/*",
-        "!src/**/*"
-    ],
-    "dependencies": {
-        "bskyb-colours": "~0.1.0",
-        "bskyb-skycons": "~0.2.0",
-        "bskyb-event": "~0.1.2"
-    },
-    "devDependencies": {
-        "bskyb-grid": "~0.1.0",
-        "bskyb-typography": "~0.1.0"
-    }
+  "name": "bskyb-share",
+  "version": "0.1.1",
+  "homepage": "https://github.com/skyglobal/share",
+  "authors": [
+    "Peter Mouland <peter.mouland@gmail.com>"
+  ],
+  "description": "share",
+  "main": "src/share.js",
+  "license": "BSD3",
+  "ignore": [
+    "**/*",
+    "!dist/**/*",
+    "!src/**/*"
+  ],
+  "dependencies": {
+    "bskyb-colours": "~0.1.0",
+    "bskyb-skycons": "~0.2.0",
+    "bskyb-event": "~0.1.2"
+  },
+  "devDependencies": {
+    "bskyb-grid": "~0.1.0",
+    "bskyb-typography": "~0.1.0",
+    "backstopjs": "~0.2.5"
+  }
 }
