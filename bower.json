@@ -21,6 +21,6 @@
   "devDependencies": {
     "bskyb-grid": "~0.1.0",
     "bskyb-typography": "~0.1.0",
-    "backstopjs": "~0.2.5"
+    "backstopjs": "peter-mouland/BackstopJS"
   }
 }
