@@ -9,6 +9,8 @@ We encourage small change pull requests, the smaller the change the quicker and 
 To build the Gulp Component Helper locally, you'll need to install:
  * [node.js](http://nodejs.org),
  * [Gulp](http://gulpjs.com),
+ * [PhantomJS](http://phantomjs.org/)
+ * [CasperJS](http://casperjs.org/)
 
 
 ## Workflow

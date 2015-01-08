@@ -4,12 +4,12 @@ Server-side Screenshots with [Cairo](http://cairographics.org/)
 
 ## Dependencies
 
-[PhantomJS](http://phantomjs.org/) - `npm i -g phantomjs`
-[CasperJS](http://casperjs.org/) - `npm i -g casperjs`
+ * [PhantomJS](http://phantomjs.org/) `npm i -g phantomjs`
+ * [CasperJS](http://casperjs.org/) `npm i -g casperjs`
 
 ## Installation
 
-`./install.sh`
+`./install-cairo.sh`
 
 #### Glib Error
 

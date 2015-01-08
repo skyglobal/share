@@ -6,9 +6,22 @@ var paths = componentHelper.paths;
 var runSequence = require('run-sequence');
 var connect = require('gulp-connect');
 var child_process = require('child_process');
+var fs = require('fs');
+var resemble = require('node-resemble');
 var spawn = child_process.spawn;
 var exec = child_process.exec;
 
+gulp.task('screenshot:init', function(cb){
+
+    var npmChild = spawn('npm', ['install'], {cwd: 'bower_components/backstopjs'});
+    npmChild.on('close', function (code) {
+        var success = code === 0; // Will be 1 in the event of failure
+        if (success){  } else {     }
+
+        cb()
+    });
+
+});
 
 gulp.task('screenshot:record', function(cb){
 
@@ -42,8 +55,6 @@ gulp.task('screenshot:accepted', function(cb){
         .pipe(gulp.dest('test/screenshots/reference'))
 });
 
-var fs = require('fs');
-var resemble = require('node-resemble');
 gulp.task('screenshot:compare', function(cb){
     try {
         var img1 = fs.readFileSync('./test/screenshots/reference/body.png');
@@ -70,6 +81,8 @@ gulp.task('screenshot:compare', function(cb){
             err = true;
         }
         if (err){
+            //gulp.src(['./test/screenshots/reference'])
+            //    .pipe('./bower_components/backstopjs/bitmaps_reference');
             process.exit(1);
         } else {
             console.log('The new images match the reference shots');
@@ -79,18 +92,7 @@ gulp.task('screenshot:compare', function(cb){
 
 });
 
-//gulp.task('init:screenshot', function(cb){
-//
-//    var npmChild = spawn('npm', ['install'], {cwd: 'bower_components/backstopjs'});
-//    npmChild.on('close', function (code) {
-//        var success = code === 0; // Will be 1 in the event of failure
-//        if (success){  } else {     }
-//
-//        gulp.emit('end', cb)
-//    });
-//
-//});
-//
+
 //gulp.task('screenshot:test', function(cb){
 //
 //    var gulpChild = spawn('gulp', ['test'], {cwd: 'bower_components/backstopjs'});
