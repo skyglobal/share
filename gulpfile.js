@@ -7,6 +7,7 @@ var runSequence = require('run-sequence');
 var connect = require('gulp-connect');
 var child_process = require('child_process');
 var fs = require('fs');
+var path = require('path');
 var resemble = require('node-resemble');
 var spawn = child_process.spawn;
 var exec = child_process.exec;
@@ -77,12 +78,13 @@ gulp.task('screenshot:compare', function(cb){
         if (data.misMatchPercentage > 0) {
             console.log('The new image content has changed: ' + data.misMatchPercentage + '% different');
             console.log('Please check the following images and move them to reference directory if they are correct.');
-            console.log(__dirname + '/test/screenshots/new/google.png');
+            console.log(__dirname + '/test/screenshots/new/body.png');
             err = true;
         }
         if (err){
-            //gulp.src(['./test/screenshots/reference'])
-            //    .pipe('./bower_components/backstopjs/bitmaps_reference');
+
+            var image = data.getImageDataUrl().
+
             process.exit(1);
         } else {
             console.log('The new images match the reference shots');
