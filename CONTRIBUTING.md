@@ -11,6 +11,8 @@ To build the Gulp Component Helper locally, you'll need to install:
  * [Gulp](http://gulpjs.com),
  * [PhantomJS](http://phantomjs.org/)
  * [CasperJS](http://casperjs.org/)
+ * [Sheut](https://github.com/skyglobal/Sheut)
+   * Please ensure you follow [installation instructions](https://github.com/skyglobal/Sheut#installation)
 
 
 ## Workflow
