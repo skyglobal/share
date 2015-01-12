@@ -10,6 +10,7 @@ test:
     - gulp build
   override:
     - gulp test
+    - gulp sheut
 machine:
   node:
     version: v0.10.33

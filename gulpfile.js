@@ -17,3 +17,9 @@ gulp.task('screenshot:accept', function(cb){
 gulp.task('screenshot:compare', function(cb){
     return sheut.compare(cb);
 });
+
+gulp.task('sheut', function(cb){
+    return sheut.capture(function(){
+        return sheut.compare(cb);
+    });
+});
