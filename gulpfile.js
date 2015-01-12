@@ -6,6 +6,12 @@ var paths = componentHelper.paths;
 var runSequence = require('run-sequence');
 var sheut = require('sheut');
 
+function handleError(err){
+    if (err){
+        gulp.emit("error", new Error(err.message))
+    }
+}
+
 gulp.task('screenshot:capture', function(cb){
     return sheut.capture(cb);
 });
@@ -20,6 +26,9 @@ gulp.task('screenshot:compare', function(cb){
 
 gulp.task('sheut', function(cb){
     return sheut.capture(function(){
-        return sheut.compare(cb);
+        return sheut.compare(function(err){
+            handleError(err);
+            cb && cb();
+        });
     });
 });
