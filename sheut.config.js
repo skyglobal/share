@@ -1,4 +1,9 @@
 module.exports = {
+    server : {
+        dir: '_site',
+        port: 8888
+    },
+    screenshots: './test/screenshots',
     "viewports" : [
         {
             "name": "phone",

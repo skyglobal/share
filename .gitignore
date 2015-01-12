@@ -7,6 +7,6 @@ node_modules/
 bower_components/
 npm-debug.log
 test/coverage
-test/screenshots/difference
+test/screenshots/different
 test/screenshots/new
 *.iml
