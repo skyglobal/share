@@ -8,7 +8,7 @@
     "gulp": "^3.8.10",
     "gulp-component-helper": "^0.4.2",
     "run-sequence": "^1.0.1",
-    "sheut": "0.0.2"
+    "sheut": "0.0.3"
   },
   "repository": {
     "type": "git",
