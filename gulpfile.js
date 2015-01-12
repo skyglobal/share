@@ -10,7 +10,6 @@ gulp.task('screenshot:capture', function(cb){
     return sheut.capture(cb);
 });
 
-
 gulp.task('screenshot:accept', function(cb){
     return sheut.accept(cb);
 });
