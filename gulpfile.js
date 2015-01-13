@@ -31,8 +31,8 @@ gulp.task('sheut', function(cb){
         .then(function(){
             return sheut.compare();
         }).then(function onSuccess(){
-            cb();
+            //cb();
         }, function onError(err){
-            gulp.emit("error", err)
+            gulp.emit("error", err);
         });
 });

@@ -30,8 +30,9 @@ module.exports = {
         {
             "name":"localhost"
             ,"url":"http://localhost:8888"
-            //,"hideSelectors": [
-            //]
+            ,"hideSelectors": [
+                '.skycon'
+            ]
             //,"removeSelectors": [
             //    "#carbonads-container"
             //]
