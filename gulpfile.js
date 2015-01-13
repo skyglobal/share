@@ -1,34 +1,42 @@
 'use strict';
 
 var gulp = require('gulp');
+var gutil = require('gulp-util');
 var componentHelper = require('gulp-component-helper')(gulp);
 var paths = componentHelper.paths;
-var runSequence = require('run-sequence');
 var sheut = require('sheut');
 
-function handleError(err){
-    if (err){
-        gulp.emit("error", new Error(err.message))
-    }
-}
-
 gulp.task('screenshot:capture', function(cb){
-    return sheut.capture(cb);
+    sheut.capture().then(function(){
+        cb()
+    });
 });
 
 gulp.task('screenshot:accept', function(cb){
-    return sheut.accept(cb);
+    sheut.accept().then(function(){
+        cb()
+    });
 });
 
 gulp.task('screenshot:compare', function(cb){
-    return sheut.compare(cb);
+    sheut.compare().then(function onSuccess(){
+        cb();
+    }, function onError(err){
+        err = new gutil.PluginError('Sheut: ', err.join('\n'), {showStack: true});
+        gulp.emit("error", err)
+        process.exit(1)
+    });
 });
 
 gulp.task('sheut', function(cb){
-    return sheut.capture(function(){
-        return sheut.compare(function(err){
-            handleError(err);
-            cb && cb();
+    sheut.capture()
+        .then(function(){
+            return sheut.compare();
+        }).then(function onSuccess(){
+            cb();
+        }, function onError(err){
+            err = new gutil.PluginError('Sheut: ', err.join('\n'), {showStack: true});
+            gulp.emit("error", err)
+            process.exit(1)
         });
-    });
 });
