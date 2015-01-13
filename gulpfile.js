@@ -22,6 +22,7 @@ gulp.task('screenshot:compare', function(cb){
     sheut.compare().then(function onSuccess(){
         cb();
     }, function onError(err){
+        console.log('Error');
         err = new gutil.PluginError('Sheut: ', err.join('\n'), {showStack: true});
         gulp.emit("error", err)
         process.exit(1)
@@ -29,14 +30,16 @@ gulp.task('screenshot:compare', function(cb){
 });
 
 gulp.task('sheut', function(cb){
-    sheut.capture()
+    return sheut.capture()
         .then(function(){
             return sheut.compare();
         }).then(function onSuccess(){
             cb();
         }, function onError(err){
-            err = new gutil.PluginError('Sheut: ', err.join('\n'), {showStack: true});
-            gulp.emit("error", err)
-            process.exit(1)
+            console.log('Error');
+            return new Error("no match");
+            //err = new gutil.PluginError('Sheut: ', err.join('\n'), {showStack: true});
+            //gulp.emit("error", err)
+            //cb()
         });
 });
