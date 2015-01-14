@@ -1,7 +1,6 @@
 'use strict';
 
 var gulp = require('gulp');
-var gutil = require('gulp-util');
 var componentHelper = require('gulp-component-helper')(gulp);
 var paths = componentHelper.paths;
 var sheut = require('sheut');
