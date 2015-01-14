@@ -5,32 +5,22 @@ var componentHelper = require('gulp-component-helper')(gulp);
 var paths = componentHelper.paths;
 var sheut = require('sheut');
 
-gulp.task('screenshot:capture', function(cb){
-    sheut.capture().then(function(){
-        cb()
-    });
+gulp.task('sheut:clean', function(cb){
+    return sheut.clean();
 });
 
-gulp.task('screenshot:accept', function(cb){
-    sheut.accept().then(function(){
-        cb()
-    });
+gulp.task('sheut:capture', ['clean'], function(cb){
+    return sheut.capture();
 });
 
-gulp.task('screenshot:compare', function(cb){
-    sheut.compare().then(function onSuccess(){
-        cb();
-    }, function onError(err){
-        gulp.emit("error", err)
-    });
+gulp.task('sheut:accept', function(cb){
+    return sheut.accept();
 });
 
-gulp.task('sheut', function(cb){
-    return sheut.capture()
-        .then(function(){
-            return sheut.compare();
-        }).then(function onSuccess(){
-            //cb();
+gulp.task('sheut:compare', ['capture'], function(cb){
+    return sheut.compare()
+        .then(function onSuccess(){
+
         }, function onError(err){
             gulp.emit("error", err);
         });
