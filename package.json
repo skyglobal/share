@@ -7,6 +7,7 @@
     "browser-sync": "^1.5.9",
     "gulp": "^3.8.10",
     "gulp-component-helper": "^0.5.1",
+    "gulp-util": "^3.0.2",
     "run-sequence": "^1.0.1",
     "sheut": "skyglobal/Sheut"
   },
@@ -15,11 +16,11 @@
     "url": "git://github.com/skyglobal/share.git"
   },
   "author": "Pete Mouland",
-  "scripts":{
-    "sheut:capture" : "sheut capture",
-    "sheut:accept" : "sheut accept",
-    "sheut:clean" : "sheut clean",
-    "sheut:compare" : "sheut compare",
-    "test" : "sheut clean && sheut capture && sheut compare"
+  "scripts": {
+    "sheut:capture": "sheut capture",
+    "sheut:accept": "sheut accept",
+    "sheut:clean": "sheut clean",
+    "sheut:compare": "sheut compare",
+    "test": "sheut clean && sheut capture && sheut compare"
   }
 }
