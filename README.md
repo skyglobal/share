@@ -7,7 +7,7 @@
 
 Include the Share assets in your project either as **Static Resources**
 
-```
+```html
 <link rel="stylesheet" href="http://web-toolkit.global.sky.com/components/share/0.1.1/css/share.css" />
 <script type="text/javascript" src="http://web-toolkit.global.sky.com/components/share/0.1.1/js/share.js"></script>
 ```
@@ -35,7 +35,7 @@ Choose a type of Share component and copy the relevant html, updating the share 
 
 To enable the widgets to open in a pop-up, the JS must be initialised:
 
-```
+```html
 <script type="text/javascript">
   skyComponents.share.init();
 </script>
