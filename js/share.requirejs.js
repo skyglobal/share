@@ -1,4 +1,13 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+var share = require('./share');
+
+if (typeof window.define === "function" && window.define.amd) {
+    define('bower_components/bskyb-share/dist/js/share.requirejs', [], function() {
+        'use strict';
+        return share;
+    });
+}
+},{"./share":4}],2:[function(require,module,exports){
 var utils = require('./utils');
 var timeout = { resize: null };
 
@@ -72,7 +81,7 @@ module.exports = {
 if (typeof skyComponents === "undefined") window.skyComponents = {};
 skyComponents.event = module.exports;
 
-},{"./utils":2}],2:[function(require,module,exports){
+},{"./utils":3}],3:[function(require,module,exports){
 var eventRegistry = {};
 var state = {    };
 var browserSpecificEvents = {
@@ -179,7 +188,7 @@ module.exports = {
     addEventListener: addEventListener,
     removeEventListener: removeEventListener
 };
-},{}],3:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
 var event = require('../../bower_components/bskyb-event/src/js/event');
 
 function getElementOffset(el) {
@@ -240,6 +249,7 @@ function contains(el, child){
 }
 
 function matches(el, selector){
+    /* istanbul ignore next | browser specific code hard to test in phantom! */
     var fn = el.matches || el.webkitMatchesSelector || el.mozMatchesSelector || el.msMatchesSelector;
     if (!fn)  { //no 'matches' on document.documentElement
         return;
@@ -301,13 +311,4 @@ module.exports = {
 /* istanbul ignore if */
 if (typeof skyComponents === "undefined") window.skyComponents = {};
 skyComponents.share = module.exports;
-},{"../../bower_components/bskyb-event/src/js/event":1}],4:[function(require,module,exports){
-var share = require('./share');
-
-if (typeof window.define === "function" && window.define.amd) {
-    define('bower_components/bskyb-share/dist/js/share.requirejs', [], function() {
-        'use strict';
-        return share;
-    });
-}
-},{"./share":3}]},{},[4]);
+},{"../../bower_components/bskyb-event/src/js/event":2}]},{},[1]);
