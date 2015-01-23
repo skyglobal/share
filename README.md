@@ -8,8 +8,8 @@
 Include the Share assets in your project either as **Static Resources**
 
 ```html
-<link rel="stylesheet" href="http://web-toolkit.global.sky.com/components/share/0.1.1/css/share.css" />
-<script type="text/javascript" src="http://web-toolkit.global.sky.com/components/share/0.1.1/js/share.js"></script>
+<link rel="stylesheet" href="http://web-toolkit.global.sky.com/components/share/0.2.0/css/share.css" />
+<script type="text/javascript" src="http://web-toolkit.global.sky.com/components/share/0.2.0/js/share.js"></script>
 ```
 
 or alternatively, **Via Bower**
