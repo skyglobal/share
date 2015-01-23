@@ -37,8 +37,7 @@
 
 @media screen and (max-width: 767px) {
   .share__title {
-    font-size: 1.1em; }
- }
+    font-size: 1.1em; } }
 
 @media screen and (max-width: 600px) {
   .share__bar {
@@ -53,7 +52,6 @@
         text-align: center; }
     .share__bar a {
       display: block; }
-
   .share__name {
     position: absolute !important;
     clip: rect(1px, 1px, 1px, 1px);
@@ -63,8 +61,7 @@
     height: 1px;
     width: 1px;
     overflow: hidden;
-    display: block; }
- }
+    display: block; } }
 
 .speak {
   position: absolute !important;

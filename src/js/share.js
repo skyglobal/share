@@ -110,6 +110,8 @@ function bindEvents() {
     event.live('click', '.share__social-link', popupLink);
 }
 
+bindEvents();
+
 module.exports = {
     init: bindEvents,
     _toggleSharePopover: toggleSharePopover,

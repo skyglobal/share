@@ -3,8 +3,6 @@ document.body.innerHTML = __html__['_site/index.html'];
 var share = skyComponents.share;
 var event = skyComponents.event;
 
-share.init(); //live events don't init for karma
-
 describe('Share module :', function () {
     var elPopup = document.querySelector('.share__popup');
     var elShare = document.querySelector('.share__summary');
