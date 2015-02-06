@@ -1,5 +1,9 @@
 # Change Log
   
+## 0.2.0
+
+  * Updated from using css/scss+js directories to `styles` and `scripts`
+
 ## 0.1.1
 
   * Fixed closing the share-popup to close when elsewhere is clicked

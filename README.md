@@ -8,15 +8,15 @@
 Include the Share assets in your project either as **Static Resources**
 
 ```html
-<link rel="stylesheet" href="http://web-toolkit.global.sky.com/components/share/0.2.0/css/share.css" />
-<script type="text/javascript" src="http://web-toolkit.global.sky.com/components/share/0.2.0/js/share.js"></script>
+<link rel="stylesheet" href="http://web-toolkit.global.sky.com/components/share/0.2.0/styles/share.min.css" />
+<script type="text/javascript" src="http://web-toolkit.global.sky.com/components/share/0.2.0/scripts/share.min.js"></script>
 ```
 
 or alternatively, **Via Bower**
 
  * Run: `bower install --save-dev bskyb-skycons`
- * Include Sass: `@import 'bower_components/bskyb-share/src/scss/share';`
- * Include JS: `var share = require('../../bower_components/bskyb-share/src/js/share');`
+ * Include Sass: `@import 'bower_components/bskyb-share/src/styles/share';`
+ * Include JS: `var share = require('../../bower_components/bskyb-share/src/scripts/share');`
 
 
 #### Dependencies 
@@ -36,7 +36,7 @@ Choose a type of Share component and copy the relevant html, updating the share 
 
 Components depends on collaboration between developers. Contributions of any size are actively encouraged.
 
-[Read More >](CONTRIBUTING.md)
+To see how to build this component locally, read the [contribution guidelines](CONTRIBUTING.md).
 
 ## Browser Support
 

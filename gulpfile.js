@@ -1,17 +1,34 @@
 'use strict';
 
 var gulp = require('gulp');
-var gutil = require('gulp-util');
-var componentHelper = require('gulp-component-helper')(gulp);
-var paths = componentHelper.paths;
+var helper = require('component-helper');
+var paths = helper.paths;
 var sheut = require('sheut');
+var argv = process.argv.slice(3).toString();
 
 function error(err){
     gulp.emit("error", err);
 }
-function success(err){
-    gutil.log(gutil.colors.green(err.message));
+function success(msg){
+    console.log(msg.message);
 }
+
+gulp.task('build', function() {
+    return helper.build.all().catch(error)
+});
+
+gulp.task('serve',  function() {
+    return helper.serve.all().catch(error);
+});
+
+gulp.task('test', function(){
+    return helper.test.all().catch(error);
+});
+
+gulp.task('release', function(){
+    var version = argv.split('--version=')[1];
+    return helper.release.all(null, version).catch(error);
+});
 
 gulp.task('sheut:clean', function(){
     return sheut.clean().then(success, error);

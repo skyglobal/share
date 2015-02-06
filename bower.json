@@ -14,12 +14,7 @@
     "!src/**/*"
   ],
   "dependencies": {
-    "bskyb-colours": "~0.1.0",
-    "bskyb-skycons": "~0.2.0",
-    "bskyb-event": "~0.1.2"
-  },
-  "devDependencies": {
-    "bskyb-grid": "~0.1.0",
-    "bskyb-typography": "~0.1.0"
+    "bskyb-core": "~0.0.3",
+    "bskyb-skycons": "~0.3.1"
   }
 }
