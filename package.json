@@ -1,6 +1,6 @@
 {
   "name": "share",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "A component to share articles.",
   "main": "dist/css/share.css",
   "devDependencies": {
