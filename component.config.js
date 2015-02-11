@@ -3,32 +3,33 @@ var pkg = require('./package.json');
 
 module.exports = {
     bower: bower,
-    buildFonts: true, // or false. Set to false if you are doing your own thing in the fonts directory
-    buildTool: 'gulp', // grunt not yet available
-    buildStyles: 'sass', // less not yet available
-    buildHTML: 'html-concat', // moustache or assemble or jekyll not yet available
-    buildScripts: 'browserify', // or requirejs not yet available
-    release: 'aws', /// or 'aws',
-    releaseConfig: { //add you release config here... this is for AWS
+    build: {
+        fonts: true, // or false. Set to false if you are doing your own thing in the fonts directory
+        styles: 'sass', // less not yet available
+        html: 'html-concat',// moustache or assemble or jekyll not yet available
+        scripts: 'browserify' // or requirejs
+    },
+    test: { // where your tests config, specs and reports are saved
+        type: 'karma',//or mocha not yet available
+        config: './test/karma.conf.js',
+        summary: './test/coverage/summary.json'
+    },
+    release: { //add you release config here... or false
+        type: 'aws',
         bucket: process.env.AWS_SKYGLOBAL_BUCKET,
         accessKey: process.env.AWS_ACCESS_KEY_ID,
         secret: process.env.AWS_SECRET_ACCESS_KEY,
         region: process.env.AWS_REGION,
         directoryPrefix: 'components/' //prefix your target release destination
     },
-    test: 'karma', //or mocha
-    testConfig: { // where your tests config, specs and reports are saved
-        root: './test',
-        specs: './test/specs',
-        config: './test/karma.conf.js',
-        summary: './test/coverage/summary.json'
+    serve: {
+        type:'static', // `static` or `node`
+        directories : '_site', //only for `static` : 'dir' or ['_site','bower_component']
+        port: 3456
+        //script : 'src/app/server.js', //server script only for `node`
+        //host: 'http://localhost:3000', // host only for `node`
+        //env: { NODE_ENV: 'local'} // env vars only for `node`
     },
-    serve: '_site', // can be a node app like below
-                    //{   script : 'src/app/server.js',
-                    //    host: 'http://localhost:3000',
-                    //    port: 3001,
-                    //    env: { NODE_ENV: 'local'}
-                    //}, // or serve static folders '_site' or ['_site','bower_component']
     paths: {
         /*
          All paths also have `script`, `styles`, `fonts`, `icons` and `images` properties
